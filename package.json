@@ -9,7 +9,9 @@
     "vercel-build": "prisma migrate dev && prisma db seed && tsup app",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint app/"
+    "lint": "eslint app/",
+    "format:write": "prettier --write \"**/*.{js,mjs,cjs,ts,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,mjs,cjs,ts,json,md}\""
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -24,6 +26,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.4.0",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/eslint__js": "^8.42.3",
     "@types/express": "^4.17.21",
     "@types/node": "^20.14.2",
