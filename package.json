@@ -24,8 +24,7 @@
     "express": "^4.19.2",
     "figures": "^6.1.0",
     "swagger-ui-express": "^5.0.1",
-    "zod": "^3.23.8",
-    "zod-prisma-types": "^3.1.8"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
