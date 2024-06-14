@@ -6,12 +6,16 @@
     "start": "node dist/index.js",
     "dev": "tsup --watch . --onSuccess \"node dist/index.js\"",
     "build": "tsup app",
-    "vercel-build": "tsup app",
+    "vercel-build": "prisma migrate dev && prisma db seed && tsup app",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
     "lint": "eslint app/"
   },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
   "dependencies": {
+    "@prisma/client": "^5.15.0",
     "chalk": "^5.3.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
@@ -22,10 +26,14 @@
     "@eslint/js": "^9.4.0",
     "@types/eslint__js": "^8.42.3",
     "@types/express": "^4.17.21",
+    "@types/node": "^20.14.2",
     "@types/swagger-ui-express": "^4.1.6",
     "eslint": "^8.57.0",
+    "prisma": "^5.15.0",
     "tsup": "^8.0.2",
+    "tsx": "^4.15.4",
     "typescript": "^5.4.5",
-    "typescript-eslint": "^7.13.0"
+    "typescript-eslint": "^7.13.0",
+    "vercel": "^34.2.7"
   }
 }

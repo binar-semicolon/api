@@ -1,3 +1,4 @@
+import { PrismaClient } from "@prisma/client";
 import chalk from "chalk";
 import { config } from "dotenv";
 import express from "express";
@@ -6,9 +7,16 @@ import figures from "figures";
 config({ path: [".env.local", ".env"] });
 
 const app = express();
+const prisma = new PrismaClient();
 const port = process.env.EXPRESS_PORT || 4000;
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
+app.get("/", async (_req, res) =>
+  res.json(
+    await prisma.user.findUnique({
+      where: { id: "baf0014e-94cf-4980-888c-5f0d437c65f6" },
+    })
+  )
+);
 
 // function setup(
 //   swaggerDoc?: JsonObject,
