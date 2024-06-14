@@ -1,4 +1,4 @@
-import { UserSchema } from "@/prisma/generated/zod";
+import { UserSchema } from "@semicolon/api/prisma/generated/zod";
 import { initContract } from "@ts-rest/core";
 import { z } from "zod";
 

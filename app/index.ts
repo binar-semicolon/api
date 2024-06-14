@@ -1,23 +1,11 @@
-import { contract } from "./contract";
-import { user } from "./routes/user";
-import { createExpressEndpoints } from "@ts-rest/express";
+import { app } from "./server";
 import chalk from "chalk";
 import { config } from "dotenv";
-import express from "express";
 import figures from "figures";
 
+const port = process.env.PORT ?? 4000;
+
 config({ path: [".env.local", ".env"] });
-
-const app = express();
-const port = process.env.EXPRESS_PORT ?? 4000;
-
-createExpressEndpoints(
-  contract,
-  {
-    user,
-  },
-  app,
-);
 
 app.listen(port, () => {
   console.log(
