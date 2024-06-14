@@ -6,6 +6,7 @@
     "start": "node dist/index.js",
     "dev": "tsup --watch . --onSuccess \"node dist/index.js\"",
     "build": "tsup app",
+    "vercel-build": "tsup app",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
     "lint": "eslint app/"

@@ -66,3 +66,5 @@ app.listen(port, () => {
     )}${chalk.bold.cyanBright(port)}`
   );
 });
+
+export default app;
