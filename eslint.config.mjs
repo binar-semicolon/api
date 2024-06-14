@@ -1,5 +1,4 @@
 // @ts-check
-
 import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 
@@ -14,5 +13,9 @@ export default tseslint.config(
         tsconfigRootDir: import.meta.dirname,
       },
     },
-  }
+    rules: {
+      // INFO: https://github.com/DefinitelyTyped/DefinitelyTyped/pull/69660
+      "@typescript-eslint/no-misused-promises": "off",
+    },
+  },
 );
