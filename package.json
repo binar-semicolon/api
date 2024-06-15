@@ -17,11 +17,14 @@
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
-    "@semicolon/api": "file:.",
     "@prisma/client": "^5.15.0",
+    "@semicolon/api": "file:.",
     "@ts-rest/core": "^3.45.2",
     "@ts-rest/express": "^3.45.2",
+    "@types/cors": "^2.8.17",
+    "body-parser": "^1.20.2",
     "chalk": "^5.3.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "figures": "^6.1.0",
