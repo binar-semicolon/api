@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "tsup --watch . --onSuccess \"node dist/index.js\"",
-    "build": "tsup app",
+    "build": "tsup",
     "vercel-build": "prisma migrate dev && prisma db seed && tsup app",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
@@ -19,9 +19,13 @@
   "dependencies": {
     "@babel/generator": "^7.24.7",
     "@prisma/client": "^5.15.0",
+    "@semicolon/api": "file:.",
     "@ts-rest/core": "^3.45.2",
     "@ts-rest/express": "^3.45.2",
+    "@types/cors": "^2.8.17",
+    "body-parser": "^1.20.2",
     "chalk": "^5.3.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "figures": "^6.1.0",
