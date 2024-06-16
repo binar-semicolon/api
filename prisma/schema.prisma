@@ -12,8 +12,51 @@ datasource db {
 }
 
 model User {
-  id       String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  username String   @unique
-  name     String
-  birthday DateTime
+  user_id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  username        String   @unique
+  email           String   @unique
+  password_hash   String
+  profile_picture String?
+  bio             String?
+  full_name       String
+  posts           Post[]
+  comments        Comment[]
+  likes           Like[]
+}
+
+model Post {
+  post_id     String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id     String    @db.Uuid
+  created_at  DateTime  @default(now())
+  user        User      @relation(fields: [user_id], references: [user_id])
+  comments    Comment[]
+  likes       Like[]
+  media       Media[]
+}
+
+model Comment {
+  comment_id  String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id     String    @db.Uuid
+  post_id     String    @db.Uuid
+  created_at  DateTime  @default(now())
+  content     String
+  user        User      @relation(fields: [user_id], references: [user_id])
+  post        Post      @relation(fields: [post_id], references: [post_id])
+}
+
+model Like {
+  likes_id    String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id     String    @db.Uuid
+  post_id     String    @db.Uuid
+  created_at  DateTime  @default(now())
+  user        User      @relation(fields: [user_id], references: [user_id])
+  post        Post      @relation(fields: [post_id], references: [post_id])
+}
+
+model Media {
+  media_id    String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  post_id     String    @db.Uuid
+  media_url   String
+  media_type  String
+  post        Post      @relation(fields: [post_id], references: [post_id])
 }
