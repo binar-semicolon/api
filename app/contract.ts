@@ -1,4 +1,4 @@
-import { UserSchema } from "@/prisma/generated/zod";
+import { UserSchema } from "@semicolon/api/prisma/generated/zod";
 import { initContract } from "@ts-rest/core";
 import { z } from "zod";
 
@@ -8,7 +8,7 @@ export const contract = c.router({
   user: {
     get: {
       method: "GET",
-      path: "/api/user/:user_id",
+      path: "/user/:id",
       pathParams: z.object({
         id: z.string().uuid(),
       }),

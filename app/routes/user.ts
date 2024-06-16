@@ -1,5 +1,5 @@
-import { contract } from "@/app/contract";
 import { PrismaClient } from "@prisma/client";
+import { contract } from "@semicolon/api/app/contract";
 import { initServer } from "@ts-rest/express";
 
 const prisma = new PrismaClient();
