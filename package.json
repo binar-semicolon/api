@@ -10,8 +10,8 @@
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
     "lint": "eslint app/",
-    "format:write": "prettier --write \"**/*.{js,mjs,cjs,ts,json,md}\"",
-    "format:check": "prettier --check \"**/*.{js,mjs,cjs,ts,json,md}\""
+    "format:write": "prettier --write \"**/*.{js,mjs,cjs,ts,json,md}\" && prisma format",
+    "format:check": "prettier --check \"**/*.{js,mjs,cjs,ts,json,md}\" && prisma format && git diff --exit-code prisma/schema.prisma"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
