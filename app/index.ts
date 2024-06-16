@@ -3,9 +3,9 @@ import chalk from "chalk";
 import { config } from "dotenv";
 import figures from "figures";
 
-const port = process.env.PORT ?? 4000;
-
 config({ path: [".env.local", ".env"] });
+
+const port = process.env.PORT ?? 4000;
 
 app.listen(port, () => {
   console.log(
