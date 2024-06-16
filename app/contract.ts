@@ -8,7 +8,7 @@ export const contract = c.router({
   user: {
     get: {
       method: "GET",
-      path: "/api/user/:id",
+      path: "/api/user/:user_id",
       pathParams: z.object({
         id: z.string().uuid(),
       }),
