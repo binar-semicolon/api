@@ -1,26 +1,29 @@
 import { PrismaClient } from "@prisma/client";
-import { contract } from "@semicolon/api/app/contract";
-import { initServer } from "@ts-rest/express";
+import { router, publicProcedure } from "@semicolon/api/app/trpc";
+import { UserSchema } from "@semicolon/api/prisma/generated/zod";
+import { TRPCError } from "@trpc/server";
+import _ from "lodash";
+import { z } from "zod";
 
 const prisma = new PrismaClient();
-const s = initServer();
 
-export const user = s.router(contract.user, {
-  get: async ({ params: { id } }) => {
-    const user = await prisma.user.findUnique({
-      where: { userId: id },
-    });
+export const user = router({
+  get: publicProcedure
+    .meta({ openapi: { method: "GET", path: "/user/id/{id}" } })
+    .input(z.object({ id: z.string().uuid() }))
+    .output(UserSchema.omit({ passwordHash: true }))
+    .query(async ({ input: { id } }) => {
+      const user = await prisma.user.findUnique({
+        where: { userId: id },
+      });
 
-    if (!user) {
-      return {
-        status: 404,
-        body: { message: "The requested user does not exist" },
-      };
-    }
+      if (!user) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "The requested user does not exist",
+        });
+      }
 
-    return {
-      status: 200,
-      body: user,
-    };
-  },
+      return _.omit(user, "passwordHash");
+    }),
 });

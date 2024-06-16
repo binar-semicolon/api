@@ -1,22 +1,33 @@
-import { contract } from "./contract";
 import { user } from "./routes/user";
-import { createExpressEndpoints } from "@ts-rest/express";
-import bodyParser from "body-parser";
-import cors from "cors";
+import { createContext, router } from "./trpc";
+import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import express from "express";
+import { createOpenApiExpressMiddleware } from "trpc-openapi";
 
 const app = express();
 
-app.use(cors()); // eslint-disable-line @typescript-eslint/no-unsafe-call
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+export const appRouter = router({
+  user,
+});
 
-createExpressEndpoints(
-  contract,
-  {
-    user,
-  },
-  app,
+app.use(
+  "/",
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
+  createOpenApiExpressMiddleware({
+    router: appRouter,
+    createContext,
+    responseMeta: null,
+    onError: null,
+    maxBodySize: null,
+  }),
+);
+
+app.use(
+  "/trpc",
+  createExpressMiddleware({
+    router: appRouter,
+    createContext,
+  }),
 );
 
 export { app };
