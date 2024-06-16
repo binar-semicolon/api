@@ -1,6 +1,7 @@
 import { user } from "./routes/user";
 import { createContext, router } from "./trpc";
 import trpcExpress from "@trpc/server/adapters/express";
+import cors from "cors";
 import express from "express";
 import { createOpenApiExpressMiddleware } from "trpc-openapi";
 
@@ -9,6 +10,8 @@ const app = express();
 export const appRouter = router({
   user,
 });
+
+app.use(cors()); // eslint-disable-line @typescript-eslint/no-unsafe-call
 
 app.use(
   "/trpc",
