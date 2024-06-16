@@ -6,9 +6,9 @@ const prisma = new PrismaClient();
 const s = initServer();
 
 export const user = s.router(contract.user, {
-  get: async ({ params: { id } }) => {
+  get: async ({ params: { user_id } }) => {
     const user = await prisma.user.findUnique({
-      where: { id },
+      where: { user_id },
     });
 
     if (!user) {
