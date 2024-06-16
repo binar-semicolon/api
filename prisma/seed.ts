@@ -14,6 +14,7 @@ async function main() {
       full_name: "John Smith",
     },
   });
+}
 
 main()
   .then(async () => {
