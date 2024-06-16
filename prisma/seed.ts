@@ -9,7 +9,6 @@ async function main() {
       username: "john.smith",
       email: "john.smith@example.com",
       password_hash: "hashedpassword123",
-      profile_picture: "",
       bio: "Software developer.",
       full_name: "John Smith",
     },
