@@ -8,7 +8,7 @@ const s = initServer();
 export const user = s.router(contract.user, {
   get: async ({ params: { id } }) => {
     const user = await prisma.user.findUnique({
-      where: { user_id: id },
+      where: { userId: id },
     });
 
     if (!user) {
