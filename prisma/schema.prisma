@@ -12,51 +12,61 @@ datasource db {
 }
 
 model User {
-  user_id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  username        String   @unique
-  email           String   @unique
-  password_hash   String
-  profile_picture String?
-  bio             String?
-  full_name       String
-  posts           Post[]
-  comments        Comment[]
-  likes           Like[]
+  userId         String    @id @default(dbgenerated("gen_random_uuid()")) @map("user_id") @db.Uuid
+  username       String    @unique
+  email          String    @unique
+  passwordHash   String    @map("password_hash")
+  profilePicture String?   @map("profile_picture")
+  bio            String?
+  fullName       String    @map("full_name")
+  posts          Post[]
+  comments       Comment[]
+  likes          Like[]
+
+  @@map("users")
 }
 
 model Post {
-  post_id     String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  user_id     String    @db.Uuid
-  created_at  DateTime  @default(now())
-  user        User      @relation(fields: [user_id], references: [user_id])
-  comments    Comment[]
-  likes       Like[]
-  media       Media[]
+  postId    String    @id @default(dbgenerated("gen_random_uuid()")) @map("post_id") @db.Uuid
+  createdAt DateTime  @default(now()) @map("created_at")
+  user      User      @relation(fields: [userId], references: [userId])
+  userId    String    @map("user_id") @db.Uuid
+  comments  Comment[]
+  likes     Like[]
+  media     Media[]
+
+  @@map("posts")
 }
 
 model Comment {
-  comment_id  String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  user_id     String    @db.Uuid
-  post_id     String    @db.Uuid
-  created_at  DateTime  @default(now())
-  content     String
-  user        User      @relation(fields: [user_id], references: [user_id])
-  post        Post      @relation(fields: [post_id], references: [post_id])
+  commentId String   @id @default(dbgenerated("gen_random_uuid()")) @map("comment_id") @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  postId    String   @map("post_id") @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at")
+  content   String
+  user      User     @relation(fields: [userId], references: [userId])
+  post      Post     @relation(fields: [postId], references: [postId])
+
+  @@map("comments")
 }
 
 model Like {
-  likes_id    String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  user_id     String    @db.Uuid
-  post_id     String    @db.Uuid
-  created_at  DateTime  @default(now())
-  user        User      @relation(fields: [user_id], references: [user_id])
-  post        Post      @relation(fields: [post_id], references: [post_id])
+  likeId    String   @id @default(dbgenerated("gen_random_uuid()")) @map("like_id") @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  postId    String   @map("post_id") @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at")
+  user      User     @relation(fields: [userId], references: [userId])
+  post      Post     @relation(fields: [postId], references: [postId])
+
+  @@map("likes")
 }
 
 model Media {
-  media_id    String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  post_id     String    @db.Uuid
-  media_url   String
-  media_type  String
-  post        Post      @relation(fields: [post_id], references: [post_id])
+  mediaId   String @id @default(dbgenerated("gen_random_uuid()")) @map("media_id") @db.Uuid
+  postId    String @map("post_id") @db.Uuid
+  mediaUrl  String @map("media_url")
+  mediaType String @map("media_type")
+  post      Post   @relation(fields: [postId], references: [postId])
+
+  @@map("media")
 }
