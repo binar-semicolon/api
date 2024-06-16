@@ -1,6 +1,6 @@
 import { user } from "./routes/user";
 import { createContext, router } from "./trpc";
-import { createExpressMiddleware } from "@trpc/server/adapters/express";
+import trpcExpress from "@trpc/server/adapters/express";
 import express from "express";
 import { createOpenApiExpressMiddleware } from "trpc-openapi";
 
@@ -11,6 +11,14 @@ export const appRouter = router({
 });
 
 app.use(
+  "/trpc",
+  trpcExpress.createExpressMiddleware({
+    router: appRouter,
+    createContext,
+  }),
+);
+
+app.use(
   "/",
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   createOpenApiExpressMiddleware({
@@ -19,14 +27,6 @@ app.use(
     responseMeta: null,
     onError: null,
     maxBodySize: null,
-  }),
-);
-
-app.use(
-  "/trpc",
-  createExpressMiddleware({
-    router: appRouter,
-    createContext,
   }),
 );
 
