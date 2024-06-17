@@ -1,12 +1,10 @@
 {
   "name": "@semicolon/api",
   "version": "0.0.0",
-  "private": true,
   "scripts": {
     "start": "node dist/index.js",
     "dev": "tsup --watch . --onSuccess \"node dist/cli.js\"",
-    "build": "tsup --experimental-dts",
-    "prepare": "patch-package && prisma generate --generator client && tsup --experimental-dts",
+    "build": "prisma generate --generator client && tsup --experimental-dts",
     "postinstall": "patch-package",
     "vercel-build": "prisma migrate dev && tsup",
     "clean": "rm -rf dist",
