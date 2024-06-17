@@ -2,10 +2,8 @@ name: Node.js Package
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: [Build]
-    branches: [main]
-    types: [completed]
+  release:
+    types: [created]
 
 jobs:
   publish:
