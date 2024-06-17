@@ -9,8 +9,6 @@ jobs:
   release:
     name: Create release
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.SEMICOLON_API_RELEASE_TOKEN }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -18,3 +16,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           token: ${{ secrets.SEMICOLON_API_RELEASE_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.SEMICOLON_API_RELEASE_TOKEN }}
