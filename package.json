@@ -5,7 +5,7 @@
     "start": "node dist/index.js",
     "dev": "tsup --watch . --onSuccess \"node dist/cli.js\"",
     "build": "prisma generate --generator client && tsup --experimental-dts",
-    "postinstall": "patch-package",
+    "prepare": "patch-package",
     "vercel-build": "prisma migrate dev && tsup",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
