@@ -1,5 +1,5 @@
 {
-  "name": "@semicolon/api",
+  "name": "@binar-semicolon/api",
   "version": "0.0.0",
   "scripts": {
     "start": "node dist/index.js",
