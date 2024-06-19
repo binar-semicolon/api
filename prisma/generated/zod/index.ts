@@ -17,6 +17,7 @@ export const TransactionIsolationLevelSchema = z.enum([
 ]);
 
 export const UserScalarFieldEnumSchema = z.enum([
+<<<<<<< HEAD
   "user_id",
   "username",
   "email",

@@ -1,18 +1,9 @@
-import { app } from "./server";
-import chalk from "chalk";
-import { config } from "dotenv";
-import figures from "figures";
+import { appRouter } from "@semicolon/api/app/server";
+import { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 
-const port = process.env.PORT ?? 4000;
+export type AppRouter = typeof appRouter;
+export type RouterInput = inferRouterInputs<AppRouter>;
+export type RouterOutput = inferRouterOutputs<AppRouter>;
 
-config({ path: [".env.local", ".env"] });
-
-app.listen(port, () => {
-  console.log(
-    `${chalk.green(figures.arrowRight)} Listening on ${chalk.cyan(
-      "http://localhost:",
-    )}${chalk.bold.cyanBright(port)}`,
-  );
-});
-
-export default app;
+export type { User, PrismaClient, Prisma } from "@prisma/client";
+export { UserSchema } from "@semicolon/api/prisma/generated/zod";
