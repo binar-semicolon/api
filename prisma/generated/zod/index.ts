@@ -38,10 +38,33 @@ export const CommentScalarFieldEnumSchema = z.enum([
   "user_id",
   "post_id",
   "created_at",
+=======
+  "userId",
+  "username",
+  "email",
+  "passwordHash",
+  "profilePicture",
+  "bio",
+  "fullName",
+]);
+
+export const PostScalarFieldEnumSchema = z.enum([
+  "postId",
+  "createdAt",
+  "userId",
+]);
+
+export const CommentScalarFieldEnumSchema = z.enum([
+  "commentId",
+  "userId",
+  "postId",
+  "createdAt",
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
   "content",
 ]);
 
 export const LikeScalarFieldEnumSchema = z.enum([
+<<<<<<< HEAD
   "likes_id",
   "user_id",
   "post_id",
@@ -53,6 +76,19 @@ export const MediaScalarFieldEnumSchema = z.enum([
   "post_id",
   "media_url",
   "media_type",
+=======
+  "likeId",
+  "userId",
+  "postId",
+  "createdAt",
+]);
+
+export const MediaScalarFieldEnumSchema = z.enum([
+  "mediaId",
+  "postId",
+  "mediaUrl",
+  "mediaType",
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
 ]);
 
 export const SortOrderSchema = z.enum(["asc", "desc"]);
@@ -69,6 +105,7 @@ export const NullsOrderSchema = z.enum(["first", "last"]);
 /////////////////////////////////////////
 
 export const UserSchema = z.object({
+<<<<<<< HEAD
   user_id: z.string(),
   username: z.string(),
   email: z.string(),
@@ -94,9 +131,15 @@ export type User = z.infer<typeof UserSchema>;
 /////////////////////////////////////////
 
 export const PostSchema = z.object({
+<<<<<<< HEAD
   post_id: z.string(),
   user_id: z.string(),
   created_at: z.coerce.date(),
+=======
+  postId: z.string(),
+  createdAt: z.coerce.date(),
+  userId: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
 });
 
 export type Post = z.infer<typeof PostSchema>;
@@ -106,10 +149,17 @@ export type Post = z.infer<typeof PostSchema>;
 /////////////////////////////////////////
 
 export const CommentSchema = z.object({
+<<<<<<< HEAD
   comment_id: z.string(),
   user_id: z.string(),
   post_id: z.string(),
   created_at: z.coerce.date(),
+=======
+  commentId: z.string(),
+  userId: z.string(),
+  postId: z.string(),
+  createdAt: z.coerce.date(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
   content: z.string(),
 });
 
@@ -120,10 +170,17 @@ export type Comment = z.infer<typeof CommentSchema>;
 /////////////////////////////////////////
 
 export const LikeSchema = z.object({
+<<<<<<< HEAD
   likes_id: z.string(),
   user_id: z.string(),
   post_id: z.string(),
   created_at: z.coerce.date(),
+=======
+  likeId: z.string(),
+  userId: z.string(),
+  postId: z.string(),
+  createdAt: z.coerce.date(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
 });
 
 export type Like = z.infer<typeof LikeSchema>;
@@ -133,10 +190,17 @@ export type Like = z.infer<typeof LikeSchema>;
 /////////////////////////////////////////
 
 export const MediaSchema = z.object({
+<<<<<<< HEAD
   media_id: z.string(),
   post_id: z.string(),
   media_url: z.string(),
   media_type: z.string(),
+=======
+  mediaId: z.string(),
+  postId: z.string(),
+  mediaUrl: z.string(),
+  mediaType: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
 });
 
 export type Media = z.infer<typeof MediaSchema>;
@@ -190,6 +254,7 @@ export const UserCountOutputTypeSelectSchema: z.ZodType<Prisma.UserCountOutputTy
 
 export const UserSelectSchema: z.ZodType<Prisma.UserSelect> = z
   .object({
+<<<<<<< HEAD
     user_id: z.boolean().optional(),
     username: z.boolean().optional(),
     email: z.boolean().optional(),
@@ -197,6 +262,15 @@ export const UserSelectSchema: z.ZodType<Prisma.UserSelect> = z
     profile_picture: z.boolean().optional(),
     bio: z.boolean().optional(),
     full_name: z.boolean().optional(),
+=======
+    userId: z.boolean().optional(),
+    username: z.boolean().optional(),
+    email: z.boolean().optional(),
+    passwordHash: z.boolean().optional(),
+    profilePicture: z.boolean().optional(),
+    bio: z.boolean().optional(),
+    fullName: z.boolean().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     posts: z
       .union([z.boolean(), z.lazy(() => PostFindManyArgsSchema)])
       .optional(),
@@ -258,9 +332,15 @@ export const PostCountOutputTypeSelectSchema: z.ZodType<Prisma.PostCountOutputTy
 
 export const PostSelectSchema: z.ZodType<Prisma.PostSelect> = z
   .object({
+<<<<<<< HEAD
     post_id: z.boolean().optional(),
     user_id: z.boolean().optional(),
     created_at: z.boolean().optional(),
+=======
+    postId: z.boolean().optional(),
+    createdAt: z.boolean().optional(),
+    userId: z.boolean().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     user: z.union([z.boolean(), z.lazy(() => UserArgsSchema)]).optional(),
     comments: z
       .union([z.boolean(), z.lazy(() => CommentFindManyArgsSchema)])
@@ -296,10 +376,17 @@ export const CommentArgsSchema: z.ZodType<Prisma.CommentDefaultArgs> = z
 
 export const CommentSelectSchema: z.ZodType<Prisma.CommentSelect> = z
   .object({
+<<<<<<< HEAD
     comment_id: z.boolean().optional(),
     user_id: z.boolean().optional(),
     post_id: z.boolean().optional(),
     created_at: z.boolean().optional(),
+=======
+    commentId: z.boolean().optional(),
+    userId: z.boolean().optional(),
+    postId: z.boolean().optional(),
+    createdAt: z.boolean().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     content: z.boolean().optional(),
     user: z.union([z.boolean(), z.lazy(() => UserArgsSchema)]).optional(),
     post: z.union([z.boolean(), z.lazy(() => PostArgsSchema)]).optional(),
@@ -325,10 +412,17 @@ export const LikeArgsSchema: z.ZodType<Prisma.LikeDefaultArgs> = z
 
 export const LikeSelectSchema: z.ZodType<Prisma.LikeSelect> = z
   .object({
+<<<<<<< HEAD
     likes_id: z.boolean().optional(),
     user_id: z.boolean().optional(),
     post_id: z.boolean().optional(),
     created_at: z.boolean().optional(),
+=======
+    likeId: z.boolean().optional(),
+    userId: z.boolean().optional(),
+    postId: z.boolean().optional(),
+    createdAt: z.boolean().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     user: z.union([z.boolean(), z.lazy(() => UserArgsSchema)]).optional(),
     post: z.union([z.boolean(), z.lazy(() => PostArgsSchema)]).optional(),
   })
@@ -352,10 +446,17 @@ export const MediaArgsSchema: z.ZodType<Prisma.MediaDefaultArgs> = z
 
 export const MediaSelectSchema: z.ZodType<Prisma.MediaSelect> = z
   .object({
+<<<<<<< HEAD
     media_id: z.boolean().optional(),
     post_id: z.boolean().optional(),
     media_url: z.boolean().optional(),
     media_type: z.boolean().optional(),
+=======
+    mediaId: z.boolean().optional(),
+    postId: z.boolean().optional(),
+    mediaUrl: z.boolean().optional(),
+    mediaType: z.boolean().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     post: z.union([z.boolean(), z.lazy(() => PostArgsSchema)]).optional(),
   })
   .strict();
@@ -382,15 +483,26 @@ export const UserWhereInputSchema: z.ZodType<Prisma.UserWhereInput> = z
         z.lazy(() => UserWhereInputSchema).array(),
       ])
       .optional(),
+<<<<<<< HEAD
     user_id: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+=======
+    userId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     username: z
       .union([z.lazy(() => StringFilterSchema), z.string()])
       .optional(),
     email: z.union([z.lazy(() => StringFilterSchema), z.string()]).optional(),
+<<<<<<< HEAD
     password_hash: z
       .union([z.lazy(() => StringFilterSchema), z.string()])
       .optional(),
     profile_picture: z
+=======
+    passwordHash: z
+      .union([z.lazy(() => StringFilterSchema), z.string()])
+      .optional(),
+    profilePicture: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       .union([z.lazy(() => StringNullableFilterSchema), z.string()])
       .optional()
       .nullable(),
@@ -398,7 +510,11 @@ export const UserWhereInputSchema: z.ZodType<Prisma.UserWhereInput> = z
       .union([z.lazy(() => StringNullableFilterSchema), z.string()])
       .optional()
       .nullable(),
+<<<<<<< HEAD
     full_name: z
+=======
+    fullName: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       .union([z.lazy(() => StringFilterSchema), z.string()])
       .optional(),
     posts: z.lazy(() => PostListRelationFilterSchema).optional(),
@@ -410,11 +526,19 @@ export const UserWhereInputSchema: z.ZodType<Prisma.UserWhereInput> = z
 export const UserOrderByWithRelationInputSchema: z.ZodType<Prisma.UserOrderByWithRelationInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z.lazy(() => SortOrderSchema).optional(),
       username: z.lazy(() => SortOrderSchema).optional(),
       email: z.lazy(() => SortOrderSchema).optional(),
       password_hash: z.lazy(() => SortOrderSchema).optional(),
       profile_picture: z
+=======
+      userId: z.lazy(() => SortOrderSchema).optional(),
+      username: z.lazy(() => SortOrderSchema).optional(),
+      email: z.lazy(() => SortOrderSchema).optional(),
+      passwordHash: z.lazy(() => SortOrderSchema).optional(),
+      profilePicture: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.lazy(() => SortOrderSchema),
           z.lazy(() => SortOrderInputSchema),
@@ -426,7 +550,11 @@ export const UserOrderByWithRelationInputSchema: z.ZodType<Prisma.UserOrderByWit
           z.lazy(() => SortOrderInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       full_name: z.lazy(() => SortOrderSchema).optional(),
+=======
+      fullName: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       posts: z.lazy(() => PostOrderByRelationAggregateInputSchema).optional(),
       comments: z
         .lazy(() => CommentOrderByRelationAggregateInputSchema)
@@ -439,11 +567,16 @@ export const UserWhereUniqueInputSchema: z.ZodType<Prisma.UserWhereUniqueInput> 
   z
     .union([
       z.object({
+<<<<<<< HEAD
         user_id: z.string(),
+=======
+        userId: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         username: z.string(),
         email: z.string(),
       }),
       z.object({
+<<<<<<< HEAD
         user_id: z.string(),
         username: z.string(),
       }),
@@ -453,6 +586,17 @@ export const UserWhereUniqueInputSchema: z.ZodType<Prisma.UserWhereUniqueInput> 
       }),
       z.object({
         user_id: z.string(),
+=======
+        userId: z.string(),
+        username: z.string(),
+      }),
+      z.object({
+        userId: z.string(),
+        email: z.string(),
+      }),
+      z.object({
+        userId: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       }),
       z.object({
         username: z.string(),
@@ -468,7 +612,11 @@ export const UserWhereUniqueInputSchema: z.ZodType<Prisma.UserWhereUniqueInput> 
     .and(
       z
         .object({
+<<<<<<< HEAD
           user_id: z.string().optional(),
+=======
+          userId: z.string().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
           username: z.string().optional(),
           email: z.string().optional(),
           AND: z
@@ -487,10 +635,17 @@ export const UserWhereUniqueInputSchema: z.ZodType<Prisma.UserWhereUniqueInput> 
               z.lazy(() => UserWhereInputSchema).array(),
             ])
             .optional(),
+<<<<<<< HEAD
           password_hash: z
             .union([z.lazy(() => StringFilterSchema), z.string()])
             .optional(),
           profile_picture: z
+=======
+          passwordHash: z
+            .union([z.lazy(() => StringFilterSchema), z.string()])
+            .optional(),
+          profilePicture: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
             .union([z.lazy(() => StringNullableFilterSchema), z.string()])
             .optional()
             .nullable(),
@@ -498,7 +653,11 @@ export const UserWhereUniqueInputSchema: z.ZodType<Prisma.UserWhereUniqueInput> 
             .union([z.lazy(() => StringNullableFilterSchema), z.string()])
             .optional()
             .nullable(),
+<<<<<<< HEAD
           full_name: z
+=======
+          fullName: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
             .union([z.lazy(() => StringFilterSchema), z.string()])
             .optional(),
           posts: z.lazy(() => PostListRelationFilterSchema).optional(),
@@ -511,11 +670,19 @@ export const UserWhereUniqueInputSchema: z.ZodType<Prisma.UserWhereUniqueInput> 
 export const UserOrderByWithAggregationInputSchema: z.ZodType<Prisma.UserOrderByWithAggregationInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z.lazy(() => SortOrderSchema).optional(),
       username: z.lazy(() => SortOrderSchema).optional(),
       email: z.lazy(() => SortOrderSchema).optional(),
       password_hash: z.lazy(() => SortOrderSchema).optional(),
       profile_picture: z
+=======
+      userId: z.lazy(() => SortOrderSchema).optional(),
+      username: z.lazy(() => SortOrderSchema).optional(),
+      email: z.lazy(() => SortOrderSchema).optional(),
+      passwordHash: z.lazy(() => SortOrderSchema).optional(),
+      profilePicture: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.lazy(() => SortOrderSchema),
           z.lazy(() => SortOrderInputSchema),
@@ -527,7 +694,11 @@ export const UserOrderByWithAggregationInputSchema: z.ZodType<Prisma.UserOrderBy
           z.lazy(() => SortOrderInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       full_name: z.lazy(() => SortOrderSchema).optional(),
+=======
+      fullName: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       _count: z.lazy(() => UserCountOrderByAggregateInputSchema).optional(),
       _max: z.lazy(() => UserMaxOrderByAggregateInputSchema).optional(),
       _min: z.lazy(() => UserMinOrderByAggregateInputSchema).optional(),
@@ -553,7 +724,11 @@ export const UserScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.UserScal
           z.lazy(() => UserScalarWhereWithAggregatesInputSchema).array(),
         ])
         .optional(),
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([z.lazy(() => UuidWithAggregatesFilterSchema), z.string()])
         .optional(),
       username: z
@@ -562,10 +737,17 @@ export const UserScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.UserScal
       email: z
         .union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()])
         .optional(),
+<<<<<<< HEAD
       password_hash: z
         .union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()])
         .optional(),
       profile_picture: z
+=======
+      passwordHash: z
+        .union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()])
+        .optional(),
+      profilePicture: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.lazy(() => StringNullableWithAggregatesFilterSchema),
           z.string(),
@@ -579,7 +761,11 @@ export const UserScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.UserScal
         ])
         .optional()
         .nullable(),
+<<<<<<< HEAD
       full_name: z
+=======
+      fullName: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()])
         .optional(),
     })
@@ -603,11 +789,19 @@ export const PostWhereInputSchema: z.ZodType<Prisma.PostWhereInput> = z
         z.lazy(() => PostWhereInputSchema).array(),
       ])
       .optional(),
+<<<<<<< HEAD
     post_id: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
     user_id: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
     created_at: z
       .union([z.lazy(() => DateTimeFilterSchema), z.coerce.date()])
       .optional(),
+=======
+    postId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+    createdAt: z
+      .union([z.lazy(() => DateTimeFilterSchema), z.coerce.date()])
+      .optional(),
+    userId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     user: z
       .union([
         z.lazy(() => UserRelationFilterSchema),
@@ -623,9 +817,15 @@ export const PostWhereInputSchema: z.ZodType<Prisma.PostWhereInput> = z
 export const PostOrderByWithRelationInputSchema: z.ZodType<Prisma.PostOrderByWithRelationInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z.lazy(() => SortOrderSchema).optional(),
       user_id: z.lazy(() => SortOrderSchema).optional(),
       created_at: z.lazy(() => SortOrderSchema).optional(),
+=======
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      createdAt: z.lazy(() => SortOrderSchema).optional(),
+      userId: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       user: z.lazy(() => UserOrderByWithRelationInputSchema).optional(),
       comments: z
         .lazy(() => CommentOrderByRelationAggregateInputSchema)
@@ -638,12 +838,20 @@ export const PostOrderByWithRelationInputSchema: z.ZodType<Prisma.PostOrderByWit
 export const PostWhereUniqueInputSchema: z.ZodType<Prisma.PostWhereUniqueInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z.string(),
+=======
+      postId: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .and(
       z
         .object({
+<<<<<<< HEAD
           post_id: z.string().optional(),
+=======
+          postId: z.string().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
           AND: z
             .union([
               z.lazy(() => PostWhereInputSchema),
@@ -660,12 +868,21 @@ export const PostWhereUniqueInputSchema: z.ZodType<Prisma.PostWhereUniqueInput> 
               z.lazy(() => PostWhereInputSchema).array(),
             ])
             .optional(),
+<<<<<<< HEAD
           user_id: z
             .union([z.lazy(() => UuidFilterSchema), z.string()])
             .optional(),
           created_at: z
             .union([z.lazy(() => DateTimeFilterSchema), z.coerce.date()])
             .optional(),
+=======
+          createdAt: z
+            .union([z.lazy(() => DateTimeFilterSchema), z.coerce.date()])
+            .optional(),
+          userId: z
+            .union([z.lazy(() => UuidFilterSchema), z.string()])
+            .optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
           user: z
             .union([
               z.lazy(() => UserRelationFilterSchema),
@@ -682,9 +899,15 @@ export const PostWhereUniqueInputSchema: z.ZodType<Prisma.PostWhereUniqueInput> 
 export const PostOrderByWithAggregationInputSchema: z.ZodType<Prisma.PostOrderByWithAggregationInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z.lazy(() => SortOrderSchema).optional(),
       user_id: z.lazy(() => SortOrderSchema).optional(),
       created_at: z.lazy(() => SortOrderSchema).optional(),
+=======
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      createdAt: z.lazy(() => SortOrderSchema).optional(),
+      userId: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       _count: z.lazy(() => PostCountOrderByAggregateInputSchema).optional(),
       _max: z.lazy(() => PostMaxOrderByAggregateInputSchema).optional(),
       _min: z.lazy(() => PostMinOrderByAggregateInputSchema).optional(),
@@ -710,6 +933,7 @@ export const PostScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.PostScal
           z.lazy(() => PostScalarWhereWithAggregatesInputSchema).array(),
         ])
         .optional(),
+<<<<<<< HEAD
       post_id: z
         .union([z.lazy(() => UuidWithAggregatesFilterSchema), z.string()])
         .optional(),
@@ -717,6 +941,326 @@ export const PostScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.PostScal
         .union([z.lazy(() => UuidWithAggregatesFilterSchema), z.string()])
         .optional(),
       created_at: z
+=======
+      postId: z
+        .union([z.lazy(() => UuidWithAggregatesFilterSchema), z.string()])
+        .optional(),
+      createdAt: z
+        .union([
+          z.lazy(() => DateTimeWithAggregatesFilterSchema),
+          z.coerce.date(),
+        ])
+        .optional(),
+      userId: z
+        .union([z.lazy(() => UuidWithAggregatesFilterSchema), z.string()])
+        .optional(),
+    })
+    .strict();
+
+export const CommentWhereInputSchema: z.ZodType<Prisma.CommentWhereInput> = z
+  .object({
+    AND: z
+      .union([
+        z.lazy(() => CommentWhereInputSchema),
+        z.lazy(() => CommentWhereInputSchema).array(),
+      ])
+      .optional(),
+    OR: z
+      .lazy(() => CommentWhereInputSchema)
+      .array()
+      .optional(),
+    NOT: z
+      .union([
+        z.lazy(() => CommentWhereInputSchema),
+        z.lazy(() => CommentWhereInputSchema).array(),
+      ])
+      .optional(),
+    commentId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+    userId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+    postId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+    createdAt: z
+      .union([z.lazy(() => DateTimeFilterSchema), z.coerce.date()])
+      .optional(),
+    content: z.union([z.lazy(() => StringFilterSchema), z.string()]).optional(),
+    user: z
+      .union([
+        z.lazy(() => UserRelationFilterSchema),
+        z.lazy(() => UserWhereInputSchema),
+      ])
+      .optional(),
+    post: z
+      .union([
+        z.lazy(() => PostRelationFilterSchema),
+        z.lazy(() => PostWhereInputSchema),
+      ])
+      .optional(),
+  })
+  .strict();
+
+export const CommentOrderByWithRelationInputSchema: z.ZodType<Prisma.CommentOrderByWithRelationInput> =
+  z
+    .object({
+      commentId: z.lazy(() => SortOrderSchema).optional(),
+      userId: z.lazy(() => SortOrderSchema).optional(),
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      createdAt: z.lazy(() => SortOrderSchema).optional(),
+      content: z.lazy(() => SortOrderSchema).optional(),
+      user: z.lazy(() => UserOrderByWithRelationInputSchema).optional(),
+      post: z.lazy(() => PostOrderByWithRelationInputSchema).optional(),
+    })
+    .strict();
+
+export const CommentWhereUniqueInputSchema: z.ZodType<Prisma.CommentWhereUniqueInput> =
+  z
+    .object({
+      commentId: z.string(),
+    })
+    .and(
+      z
+        .object({
+          commentId: z.string().optional(),
+          AND: z
+            .union([
+              z.lazy(() => CommentWhereInputSchema),
+              z.lazy(() => CommentWhereInputSchema).array(),
+            ])
+            .optional(),
+          OR: z
+            .lazy(() => CommentWhereInputSchema)
+            .array()
+            .optional(),
+          NOT: z
+            .union([
+              z.lazy(() => CommentWhereInputSchema),
+              z.lazy(() => CommentWhereInputSchema).array(),
+            ])
+            .optional(),
+          userId: z
+            .union([z.lazy(() => UuidFilterSchema), z.string()])
+            .optional(),
+          postId: z
+            .union([z.lazy(() => UuidFilterSchema), z.string()])
+            .optional(),
+          createdAt: z
+            .union([z.lazy(() => DateTimeFilterSchema), z.coerce.date()])
+            .optional(),
+          content: z
+            .union([z.lazy(() => StringFilterSchema), z.string()])
+            .optional(),
+          user: z
+            .union([
+              z.lazy(() => UserRelationFilterSchema),
+              z.lazy(() => UserWhereInputSchema),
+            ])
+            .optional(),
+          post: z
+            .union([
+              z.lazy(() => PostRelationFilterSchema),
+              z.lazy(() => PostWhereInputSchema),
+            ])
+            .optional(),
+        })
+        .strict(),
+    );
+
+export const CommentOrderByWithAggregationInputSchema: z.ZodType<Prisma.CommentOrderByWithAggregationInput> =
+  z
+    .object({
+      commentId: z.lazy(() => SortOrderSchema).optional(),
+      userId: z.lazy(() => SortOrderSchema).optional(),
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      createdAt: z.lazy(() => SortOrderSchema).optional(),
+      content: z.lazy(() => SortOrderSchema).optional(),
+      _count: z.lazy(() => CommentCountOrderByAggregateInputSchema).optional(),
+      _max: z.lazy(() => CommentMaxOrderByAggregateInputSchema).optional(),
+      _min: z.lazy(() => CommentMinOrderByAggregateInputSchema).optional(),
+    })
+    .strict();
+
+export const CommentScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.CommentScalarWhereWithAggregatesInput> =
+  z
+    .object({
+      AND: z
+        .union([
+          z.lazy(() => CommentScalarWhereWithAggregatesInputSchema),
+          z.lazy(() => CommentScalarWhereWithAggregatesInputSchema).array(),
+        ])
+        .optional(),
+      OR: z
+        .lazy(() => CommentScalarWhereWithAggregatesInputSchema)
+        .array()
+        .optional(),
+      NOT: z
+        .union([
+          z.lazy(() => CommentScalarWhereWithAggregatesInputSchema),
+          z.lazy(() => CommentScalarWhereWithAggregatesInputSchema).array(),
+        ])
+        .optional(),
+      commentId: z
+        .union([z.lazy(() => UuidWithAggregatesFilterSchema), z.string()])
+        .optional(),
+      userId: z
+        .union([z.lazy(() => UuidWithAggregatesFilterSchema), z.string()])
+        .optional(),
+      postId: z
+        .union([z.lazy(() => UuidWithAggregatesFilterSchema), z.string()])
+        .optional(),
+      createdAt: z
+        .union([
+          z.lazy(() => DateTimeWithAggregatesFilterSchema),
+          z.coerce.date(),
+        ])
+        .optional(),
+      content: z
+        .union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()])
+        .optional(),
+    })
+    .strict();
+
+export const LikeWhereInputSchema: z.ZodType<Prisma.LikeWhereInput> = z
+  .object({
+    AND: z
+      .union([
+        z.lazy(() => LikeWhereInputSchema),
+        z.lazy(() => LikeWhereInputSchema).array(),
+      ])
+      .optional(),
+    OR: z
+      .lazy(() => LikeWhereInputSchema)
+      .array()
+      .optional(),
+    NOT: z
+      .union([
+        z.lazy(() => LikeWhereInputSchema),
+        z.lazy(() => LikeWhereInputSchema).array(),
+      ])
+      .optional(),
+    likeId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+    userId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+    postId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+    createdAt: z
+      .union([z.lazy(() => DateTimeFilterSchema), z.coerce.date()])
+      .optional(),
+    user: z
+      .union([
+        z.lazy(() => UserRelationFilterSchema),
+        z.lazy(() => UserWhereInputSchema),
+      ])
+      .optional(),
+    post: z
+      .union([
+        z.lazy(() => PostRelationFilterSchema),
+        z.lazy(() => PostWhereInputSchema),
+      ])
+      .optional(),
+  })
+  .strict();
+
+export const LikeOrderByWithRelationInputSchema: z.ZodType<Prisma.LikeOrderByWithRelationInput> =
+  z
+    .object({
+      likeId: z.lazy(() => SortOrderSchema).optional(),
+      userId: z.lazy(() => SortOrderSchema).optional(),
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      createdAt: z.lazy(() => SortOrderSchema).optional(),
+      user: z.lazy(() => UserOrderByWithRelationInputSchema).optional(),
+      post: z.lazy(() => PostOrderByWithRelationInputSchema).optional(),
+    })
+    .strict();
+
+export const LikeWhereUniqueInputSchema: z.ZodType<Prisma.LikeWhereUniqueInput> =
+  z
+    .object({
+      likeId: z.string(),
+    })
+    .and(
+      z
+        .object({
+          likeId: z.string().optional(),
+          AND: z
+            .union([
+              z.lazy(() => LikeWhereInputSchema),
+              z.lazy(() => LikeWhereInputSchema).array(),
+            ])
+            .optional(),
+          OR: z
+            .lazy(() => LikeWhereInputSchema)
+            .array()
+            .optional(),
+          NOT: z
+            .union([
+              z.lazy(() => LikeWhereInputSchema),
+              z.lazy(() => LikeWhereInputSchema).array(),
+            ])
+            .optional(),
+          userId: z
+            .union([z.lazy(() => UuidFilterSchema), z.string()])
+            .optional(),
+          postId: z
+            .union([z.lazy(() => UuidFilterSchema), z.string()])
+            .optional(),
+          createdAt: z
+            .union([z.lazy(() => DateTimeFilterSchema), z.coerce.date()])
+            .optional(),
+          user: z
+            .union([
+              z.lazy(() => UserRelationFilterSchema),
+              z.lazy(() => UserWhereInputSchema),
+            ])
+            .optional(),
+          post: z
+            .union([
+              z.lazy(() => PostRelationFilterSchema),
+              z.lazy(() => PostWhereInputSchema),
+            ])
+            .optional(),
+        })
+        .strict(),
+    );
+
+export const LikeOrderByWithAggregationInputSchema: z.ZodType<Prisma.LikeOrderByWithAggregationInput> =
+  z
+    .object({
+      likeId: z.lazy(() => SortOrderSchema).optional(),
+      userId: z.lazy(() => SortOrderSchema).optional(),
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      createdAt: z.lazy(() => SortOrderSchema).optional(),
+      _count: z.lazy(() => LikeCountOrderByAggregateInputSchema).optional(),
+      _max: z.lazy(() => LikeMaxOrderByAggregateInputSchema).optional(),
+      _min: z.lazy(() => LikeMinOrderByAggregateInputSchema).optional(),
+    })
+    .strict();
+
+export const LikeScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.LikeScalarWhereWithAggregatesInput> =
+  z
+    .object({
+      AND: z
+        .union([
+          z.lazy(() => LikeScalarWhereWithAggregatesInputSchema),
+          z.lazy(() => LikeScalarWhereWithAggregatesInputSchema).array(),
+        ])
+        .optional(),
+      OR: z
+        .lazy(() => LikeScalarWhereWithAggregatesInputSchema)
+        .array()
+        .optional(),
+      NOT: z
+        .union([
+          z.lazy(() => LikeScalarWhereWithAggregatesInputSchema),
+          z.lazy(() => LikeScalarWhereWithAggregatesInputSchema).array(),
+        ])
+        .optional(),
+      likeId: z
+        .union([z.lazy(() => UuidWithAggregatesFilterSchema), z.string()])
+        .optional(),
+      userId: z
+        .union([z.lazy(() => UuidWithAggregatesFilterSchema), z.string()])
+        .optional(),
+      postId: z
+        .union([z.lazy(() => UuidWithAggregatesFilterSchema), z.string()])
+        .optional(),
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.lazy(() => DateTimeWithAggregatesFilterSchema),
           z.coerce.date(),
@@ -725,6 +1269,7 @@ export const PostScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.PostScal
     })
     .strict();
 
+<<<<<<< HEAD
 export const CommentWhereInputSchema: z.ZodType<Prisma.CommentWhereInput> = z
   .object({
     AND: z
@@ -1038,6 +1583,8 @@ export const LikeScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.LikeScal
     })
     .strict();
 
+=======
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
 export const MediaWhereInputSchema: z.ZodType<Prisma.MediaWhereInput> = z
   .object({
     AND: z
@@ -1056,12 +1603,21 @@ export const MediaWhereInputSchema: z.ZodType<Prisma.MediaWhereInput> = z
         z.lazy(() => MediaWhereInputSchema).array(),
       ])
       .optional(),
+<<<<<<< HEAD
     media_id: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
     post_id: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
     media_url: z
       .union([z.lazy(() => StringFilterSchema), z.string()])
       .optional(),
     media_type: z
+=======
+    mediaId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+    postId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+    mediaUrl: z
+      .union([z.lazy(() => StringFilterSchema), z.string()])
+      .optional(),
+    mediaType: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       .union([z.lazy(() => StringFilterSchema), z.string()])
       .optional(),
     post: z
@@ -1076,10 +1632,17 @@ export const MediaWhereInputSchema: z.ZodType<Prisma.MediaWhereInput> = z
 export const MediaOrderByWithRelationInputSchema: z.ZodType<Prisma.MediaOrderByWithRelationInput> =
   z
     .object({
+<<<<<<< HEAD
       media_id: z.lazy(() => SortOrderSchema).optional(),
       post_id: z.lazy(() => SortOrderSchema).optional(),
       media_url: z.lazy(() => SortOrderSchema).optional(),
       media_type: z.lazy(() => SortOrderSchema).optional(),
+=======
+      mediaId: z.lazy(() => SortOrderSchema).optional(),
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      mediaUrl: z.lazy(() => SortOrderSchema).optional(),
+      mediaType: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       post: z.lazy(() => PostOrderByWithRelationInputSchema).optional(),
     })
     .strict();
@@ -1087,12 +1650,20 @@ export const MediaOrderByWithRelationInputSchema: z.ZodType<Prisma.MediaOrderByW
 export const MediaWhereUniqueInputSchema: z.ZodType<Prisma.MediaWhereUniqueInput> =
   z
     .object({
+<<<<<<< HEAD
       media_id: z.string(),
+=======
+      mediaId: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .and(
       z
         .object({
+<<<<<<< HEAD
           media_id: z.string().optional(),
+=======
+          mediaId: z.string().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
           AND: z
             .union([
               z.lazy(() => MediaWhereInputSchema),
@@ -1109,6 +1680,7 @@ export const MediaWhereUniqueInputSchema: z.ZodType<Prisma.MediaWhereUniqueInput
               z.lazy(() => MediaWhereInputSchema).array(),
             ])
             .optional(),
+<<<<<<< HEAD
           post_id: z
             .union([z.lazy(() => UuidFilterSchema), z.string()])
             .optional(),
@@ -1116,6 +1688,15 @@ export const MediaWhereUniqueInputSchema: z.ZodType<Prisma.MediaWhereUniqueInput
             .union([z.lazy(() => StringFilterSchema), z.string()])
             .optional(),
           media_type: z
+=======
+          postId: z
+            .union([z.lazy(() => UuidFilterSchema), z.string()])
+            .optional(),
+          mediaUrl: z
+            .union([z.lazy(() => StringFilterSchema), z.string()])
+            .optional(),
+          mediaType: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
             .union([z.lazy(() => StringFilterSchema), z.string()])
             .optional(),
           post: z
@@ -1131,10 +1712,17 @@ export const MediaWhereUniqueInputSchema: z.ZodType<Prisma.MediaWhereUniqueInput
 export const MediaOrderByWithAggregationInputSchema: z.ZodType<Prisma.MediaOrderByWithAggregationInput> =
   z
     .object({
+<<<<<<< HEAD
       media_id: z.lazy(() => SortOrderSchema).optional(),
       post_id: z.lazy(() => SortOrderSchema).optional(),
       media_url: z.lazy(() => SortOrderSchema).optional(),
       media_type: z.lazy(() => SortOrderSchema).optional(),
+=======
+      mediaId: z.lazy(() => SortOrderSchema).optional(),
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      mediaUrl: z.lazy(() => SortOrderSchema).optional(),
+      mediaType: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       _count: z.lazy(() => MediaCountOrderByAggregateInputSchema).optional(),
       _max: z.lazy(() => MediaMaxOrderByAggregateInputSchema).optional(),
       _min: z.lazy(() => MediaMinOrderByAggregateInputSchema).optional(),
@@ -1160,6 +1748,7 @@ export const MediaScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.MediaSc
           z.lazy(() => MediaScalarWhereWithAggregatesInputSchema).array(),
         ])
         .optional(),
+<<<<<<< HEAD
       media_id: z
         .union([z.lazy(() => UuidWithAggregatesFilterSchema), z.string()])
         .optional(),
@@ -1170,6 +1759,18 @@ export const MediaScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.MediaSc
         .union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()])
         .optional(),
       media_type: z
+=======
+      mediaId: z
+        .union([z.lazy(() => UuidWithAggregatesFilterSchema), z.string()])
+        .optional(),
+      postId: z
+        .union([z.lazy(() => UuidWithAggregatesFilterSchema), z.string()])
+        .optional(),
+      mediaUrl: z
+        .union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()])
+        .optional(),
+      mediaType: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()])
         .optional(),
     })
@@ -1177,6 +1778,7 @@ export const MediaScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.MediaSc
 
 export const UserCreateInputSchema: z.ZodType<Prisma.UserCreateInput> = z
   .object({
+<<<<<<< HEAD
     user_id: z.string().optional(),
     username: z.string(),
     email: z.string(),
@@ -1184,6 +1786,15 @@ export const UserCreateInputSchema: z.ZodType<Prisma.UserCreateInput> = z
     profile_picture: z.string().optional().nullable(),
     bio: z.string().optional().nullable(),
     full_name: z.string(),
+=======
+    userId: z.string().optional(),
+    username: z.string(),
+    email: z.string(),
+    passwordHash: z.string(),
+    profilePicture: z.string().optional().nullable(),
+    bio: z.string().optional().nullable(),
+    fullName: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     posts: z.lazy(() => PostCreateNestedManyWithoutUserInputSchema).optional(),
     comments: z
       .lazy(() => CommentCreateNestedManyWithoutUserInputSchema)
@@ -1195,6 +1806,7 @@ export const UserCreateInputSchema: z.ZodType<Prisma.UserCreateInput> = z
 export const UserUncheckedCreateInputSchema: z.ZodType<Prisma.UserUncheckedCreateInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z.string().optional(),
       username: z.string(),
       email: z.string(),
@@ -1202,6 +1814,15 @@ export const UserUncheckedCreateInputSchema: z.ZodType<Prisma.UserUncheckedCreat
       profile_picture: z.string().optional().nullable(),
       bio: z.string().optional().nullable(),
       full_name: z.string(),
+=======
+      userId: z.string().optional(),
+      username: z.string(),
+      email: z.string(),
+      passwordHash: z.string(),
+      profilePicture: z.string().optional().nullable(),
+      bio: z.string().optional().nullable(),
+      fullName: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       posts: z
         .lazy(() => PostUncheckedCreateNestedManyWithoutUserInputSchema)
         .optional(),
@@ -1216,7 +1837,11 @@ export const UserUncheckedCreateInputSchema: z.ZodType<Prisma.UserUncheckedCreat
 
 export const UserUpdateInputSchema: z.ZodType<Prisma.UserUpdateInput> = z
   .object({
+<<<<<<< HEAD
     user_id: z
+=======
+    userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       .union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)])
       .optional(),
     username: z
@@ -1225,10 +1850,17 @@ export const UserUpdateInputSchema: z.ZodType<Prisma.UserUpdateInput> = z
     email: z
       .union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)])
       .optional(),
+<<<<<<< HEAD
     password_hash: z
       .union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)])
       .optional(),
     profile_picture: z
+=======
+    passwordHash: z
+      .union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)])
+      .optional(),
+    profilePicture: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       .union([
         z.string(),
         z.lazy(() => NullableStringFieldUpdateOperationsInputSchema),
@@ -1242,7 +1874,11 @@ export const UserUpdateInputSchema: z.ZodType<Prisma.UserUpdateInput> = z
       ])
       .optional()
       .nullable(),
+<<<<<<< HEAD
     full_name: z
+=======
+    fullName: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       .union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)])
       .optional(),
     posts: z.lazy(() => PostUpdateManyWithoutUserNestedInputSchema).optional(),
@@ -1256,7 +1892,11 @@ export const UserUpdateInputSchema: z.ZodType<Prisma.UserUpdateInput> = z
 export const UserUncheckedUpdateInputSchema: z.ZodType<Prisma.UserUncheckedUpdateInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -1274,13 +1914,21 @@ export const UserUncheckedUpdateInputSchema: z.ZodType<Prisma.UserUncheckedUpdat
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       password_hash: z
+=======
+      passwordHash: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       profile_picture: z
+=======
+      profilePicture: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => NullableStringFieldUpdateOperationsInputSchema),
@@ -1294,7 +1942,11 @@ export const UserUncheckedUpdateInputSchema: z.ZodType<Prisma.UserUncheckedUpdat
         ])
         .optional()
         .nullable(),
+<<<<<<< HEAD
       full_name: z
+=======
+      fullName: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -1315,6 +1967,7 @@ export const UserUncheckedUpdateInputSchema: z.ZodType<Prisma.UserUncheckedUpdat
 export const UserCreateManyInputSchema: z.ZodType<Prisma.UserCreateManyInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z.string().optional(),
       username: z.string(),
       email: z.string(),
@@ -1322,13 +1975,26 @@ export const UserCreateManyInputSchema: z.ZodType<Prisma.UserCreateManyInput> =
       profile_picture: z.string().optional().nullable(),
       bio: z.string().optional().nullable(),
       full_name: z.string(),
+=======
+      userId: z.string().optional(),
+      username: z.string(),
+      email: z.string(),
+      passwordHash: z.string(),
+      profilePicture: z.string().optional().nullable(),
+      bio: z.string().optional().nullable(),
+      fullName: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const UserUpdateManyMutationInputSchema: z.ZodType<Prisma.UserUpdateManyMutationInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -1346,13 +2012,21 @@ export const UserUpdateManyMutationInputSchema: z.ZodType<Prisma.UserUpdateManyM
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       password_hash: z
+=======
+      passwordHash: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       profile_picture: z
+=======
+      profilePicture: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => NullableStringFieldUpdateOperationsInputSchema),
@@ -1366,7 +2040,11 @@ export const UserUpdateManyMutationInputSchema: z.ZodType<Prisma.UserUpdateManyM
         ])
         .optional()
         .nullable(),
+<<<<<<< HEAD
       full_name: z
+=======
+      fullName: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -1378,7 +2056,11 @@ export const UserUpdateManyMutationInputSchema: z.ZodType<Prisma.UserUpdateManyM
 export const UserUncheckedUpdateManyInputSchema: z.ZodType<Prisma.UserUncheckedUpdateManyInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -1396,13 +2078,21 @@ export const UserUncheckedUpdateManyInputSchema: z.ZodType<Prisma.UserUncheckedU
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       password_hash: z
+=======
+      passwordHash: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       profile_picture: z
+=======
+      profilePicture: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => NullableStringFieldUpdateOperationsInputSchema),
@@ -1416,7 +2106,11 @@ export const UserUncheckedUpdateManyInputSchema: z.ZodType<Prisma.UserUncheckedU
         ])
         .optional()
         .nullable(),
+<<<<<<< HEAD
       full_name: z
+=======
+      fullName: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -1427,8 +2121,13 @@ export const UserUncheckedUpdateManyInputSchema: z.ZodType<Prisma.UserUncheckedU
 
 export const PostCreateInputSchema: z.ZodType<Prisma.PostCreateInput> = z
   .object({
+<<<<<<< HEAD
     post_id: z.string().optional(),
     created_at: z.coerce.date().optional(),
+=======
+    postId: z.string().optional(),
+    createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     user: z.lazy(() => UserCreateNestedOneWithoutPostsInputSchema),
     comments: z
       .lazy(() => CommentCreateNestedManyWithoutPostInputSchema)
@@ -1441,9 +2140,15 @@ export const PostCreateInputSchema: z.ZodType<Prisma.PostCreateInput> = z
 export const PostUncheckedCreateInputSchema: z.ZodType<Prisma.PostUncheckedCreateInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z.string().optional(),
       user_id: z.string(),
       created_at: z.coerce.date().optional(),
+=======
+      postId: z.string().optional(),
+      createdAt: z.coerce.date().optional(),
+      userId: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       comments: z
         .lazy(() => CommentUncheckedCreateNestedManyWithoutPostInputSchema)
         .optional(),
@@ -1458,10 +2163,17 @@ export const PostUncheckedCreateInputSchema: z.ZodType<Prisma.PostUncheckedCreat
 
 export const PostUpdateInputSchema: z.ZodType<Prisma.PostUpdateInput> = z
   .object({
+<<<<<<< HEAD
     post_id: z
       .union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)])
       .optional(),
     created_at: z
+=======
+    postId: z
+      .union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)])
+      .optional(),
+    createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       .union([
         z.coerce.date(),
         z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -1481,12 +2193,17 @@ export const PostUpdateInputSchema: z.ZodType<Prisma.PostUpdateInput> = z
 export const PostUncheckedUpdateInputSchema: z.ZodType<Prisma.PostUncheckedUpdateInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       user_id: z
         .union([
           z.string(),
@@ -1494,11 +2211,23 @@ export const PostUncheckedUpdateInputSchema: z.ZodType<Prisma.PostUncheckedUpdat
         ])
         .optional(),
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
+=======
+      userId: z
+        .union([
+          z.string(),
+          z.lazy(() => StringFieldUpdateOperationsInputSchema),
+        ])
+        .optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       comments: z
         .lazy(() => CommentUncheckedUpdateManyWithoutPostNestedInputSchema)
         .optional(),
@@ -1514,22 +2243,36 @@ export const PostUncheckedUpdateInputSchema: z.ZodType<Prisma.PostUncheckedUpdat
 export const PostCreateManyInputSchema: z.ZodType<Prisma.PostCreateManyInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z.string().optional(),
       user_id: z.string(),
       created_at: z.coerce.date().optional(),
+=======
+      postId: z.string().optional(),
+      createdAt: z.coerce.date().optional(),
+      userId: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const PostUpdateManyMutationInputSchema: z.ZodType<Prisma.PostUpdateManyMutationInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -1541,12 +2284,17 @@ export const PostUpdateManyMutationInputSchema: z.ZodType<Prisma.PostUpdateManyM
 export const PostUncheckedUpdateManyInputSchema: z.ZodType<Prisma.PostUncheckedUpdateManyInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       user_id: z
         .union([
           z.string(),
@@ -1554,18 +2302,35 @@ export const PostUncheckedUpdateManyInputSchema: z.ZodType<Prisma.PostUncheckedU
         ])
         .optional(),
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
+=======
+      userId: z
+        .union([
+          z.string(),
+          z.lazy(() => StringFieldUpdateOperationsInputSchema),
+        ])
+        .optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const CommentCreateInputSchema: z.ZodType<Prisma.CommentCreateInput> = z
   .object({
+<<<<<<< HEAD
     comment_id: z.string().optional(),
     created_at: z.coerce.date().optional(),
+=======
+    commentId: z.string().optional(),
+    createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     content: z.string(),
     user: z.lazy(() => UserCreateNestedOneWithoutCommentsInputSchema),
     post: z.lazy(() => PostCreateNestedOneWithoutCommentsInputSchema),
@@ -1575,20 +2340,34 @@ export const CommentCreateInputSchema: z.ZodType<Prisma.CommentCreateInput> = z
 export const CommentUncheckedCreateInputSchema: z.ZodType<Prisma.CommentUncheckedCreateInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z.string().optional(),
       user_id: z.string(),
       post_id: z.string(),
       created_at: z.coerce.date().optional(),
+=======
+      commentId: z.string().optional(),
+      userId: z.string(),
+      postId: z.string(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       content: z.string(),
     })
     .strict();
 
 export const CommentUpdateInputSchema: z.ZodType<Prisma.CommentUpdateInput> = z
   .object({
+<<<<<<< HEAD
     comment_id: z
       .union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)])
       .optional(),
     created_at: z
+=======
+    commentId: z
+      .union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)])
+      .optional(),
+    createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       .union([
         z.coerce.date(),
         z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -1609,25 +2388,41 @@ export const CommentUpdateInputSchema: z.ZodType<Prisma.CommentUpdateInput> = z
 export const CommentUncheckedUpdateInputSchema: z.ZodType<Prisma.CommentUncheckedUpdateInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z
+=======
+      commentId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -1645,10 +2440,17 @@ export const CommentUncheckedUpdateInputSchema: z.ZodType<Prisma.CommentUnchecke
 export const CommentCreateManyInputSchema: z.ZodType<Prisma.CommentCreateManyInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z.string().optional(),
       user_id: z.string(),
       post_id: z.string(),
       created_at: z.coerce.date().optional(),
+=======
+      commentId: z.string().optional(),
+      userId: z.string(),
+      postId: z.string(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       content: z.string(),
     })
     .strict();
@@ -1656,13 +2458,21 @@ export const CommentCreateManyInputSchema: z.ZodType<Prisma.CommentCreateManyInp
 export const CommentUpdateManyMutationInputSchema: z.ZodType<Prisma.CommentUpdateManyMutationInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z
+=======
+      commentId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -1680,25 +2490,41 @@ export const CommentUpdateManyMutationInputSchema: z.ZodType<Prisma.CommentUpdat
 export const CommentUncheckedUpdateManyInputSchema: z.ZodType<Prisma.CommentUncheckedUpdateManyInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z
+=======
+      commentId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -1715,8 +2541,13 @@ export const CommentUncheckedUpdateManyInputSchema: z.ZodType<Prisma.CommentUnch
 
 export const LikeCreateInputSchema: z.ZodType<Prisma.LikeCreateInput> = z
   .object({
+<<<<<<< HEAD
     likes_id: z.string().optional(),
     created_at: z.coerce.date().optional(),
+=======
+    likeId: z.string().optional(),
+    createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     user: z.lazy(() => UserCreateNestedOneWithoutLikesInputSchema),
     post: z.lazy(() => PostCreateNestedOneWithoutLikesInputSchema),
   })
@@ -1725,19 +2556,33 @@ export const LikeCreateInputSchema: z.ZodType<Prisma.LikeCreateInput> = z
 export const LikeUncheckedCreateInputSchema: z.ZodType<Prisma.LikeUncheckedCreateInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z.string().optional(),
       user_id: z.string(),
       post_id: z.string(),
       created_at: z.coerce.date().optional(),
+=======
+      likeId: z.string().optional(),
+      userId: z.string(),
+      postId: z.string(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const LikeUpdateInputSchema: z.ZodType<Prisma.LikeUpdateInput> = z
   .object({
+<<<<<<< HEAD
     likes_id: z
       .union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)])
       .optional(),
     created_at: z
+=======
+    likeId: z
+      .union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)])
+      .optional(),
+    createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       .union([
         z.coerce.date(),
         z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -1755,25 +2600,41 @@ export const LikeUpdateInputSchema: z.ZodType<Prisma.LikeUpdateInput> = z
 export const LikeUncheckedUpdateInputSchema: z.ZodType<Prisma.LikeUncheckedUpdateInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z
+=======
+      likeId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -1785,23 +2646,38 @@ export const LikeUncheckedUpdateInputSchema: z.ZodType<Prisma.LikeUncheckedUpdat
 export const LikeCreateManyInputSchema: z.ZodType<Prisma.LikeCreateManyInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z.string().optional(),
       user_id: z.string(),
       post_id: z.string(),
       created_at: z.coerce.date().optional(),
+=======
+      likeId: z.string().optional(),
+      userId: z.string(),
+      postId: z.string(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const LikeUpdateManyMutationInputSchema: z.ZodType<Prisma.LikeUpdateManyMutationInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z
+=======
+      likeId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -1813,25 +2689,41 @@ export const LikeUpdateManyMutationInputSchema: z.ZodType<Prisma.LikeUpdateManyM
 export const LikeUncheckedUpdateManyInputSchema: z.ZodType<Prisma.LikeUncheckedUpdateManyInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z
+=======
+      likeId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -1842,9 +2734,15 @@ export const LikeUncheckedUpdateManyInputSchema: z.ZodType<Prisma.LikeUncheckedU
 
 export const MediaCreateInputSchema: z.ZodType<Prisma.MediaCreateInput> = z
   .object({
+<<<<<<< HEAD
     media_id: z.string().optional(),
     media_url: z.string(),
     media_type: z.string(),
+=======
+    mediaId: z.string().optional(),
+    mediaUrl: z.string(),
+    mediaType: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     post: z.lazy(() => PostCreateNestedOneWithoutMediaInputSchema),
   })
   .strict();
@@ -1852,15 +2750,23 @@ export const MediaCreateInputSchema: z.ZodType<Prisma.MediaCreateInput> = z
 export const MediaUncheckedCreateInputSchema: z.ZodType<Prisma.MediaUncheckedCreateInput> =
   z
     .object({
+<<<<<<< HEAD
       media_id: z.string().optional(),
       post_id: z.string(),
       media_url: z.string(),
       media_type: z.string(),
+=======
+      mediaId: z.string().optional(),
+      postId: z.string(),
+      mediaUrl: z.string(),
+      mediaType: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const MediaUpdateInputSchema: z.ZodType<Prisma.MediaUpdateInput> = z
   .object({
+<<<<<<< HEAD
     media_id: z
       .union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)])
       .optional(),
@@ -1868,6 +2774,15 @@ export const MediaUpdateInputSchema: z.ZodType<Prisma.MediaUpdateInput> = z
       .union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)])
       .optional(),
     media_type: z
+=======
+    mediaId: z
+      .union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)])
+      .optional(),
+    mediaUrl: z
+      .union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)])
+      .optional(),
+    mediaType: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       .union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)])
       .optional(),
     post: z
@@ -1879,25 +2794,41 @@ export const MediaUpdateInputSchema: z.ZodType<Prisma.MediaUpdateInput> = z
 export const MediaUncheckedUpdateInputSchema: z.ZodType<Prisma.MediaUncheckedUpdateInput> =
   z
     .object({
+<<<<<<< HEAD
       media_id: z
+=======
+      mediaId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       media_url: z
+=======
+      mediaUrl: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       media_type: z
+=======
+      mediaType: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -1909,29 +2840,48 @@ export const MediaUncheckedUpdateInputSchema: z.ZodType<Prisma.MediaUncheckedUpd
 export const MediaCreateManyInputSchema: z.ZodType<Prisma.MediaCreateManyInput> =
   z
     .object({
+<<<<<<< HEAD
       media_id: z.string().optional(),
       post_id: z.string(),
       media_url: z.string(),
       media_type: z.string(),
+=======
+      mediaId: z.string().optional(),
+      postId: z.string(),
+      mediaUrl: z.string(),
+      mediaType: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const MediaUpdateManyMutationInputSchema: z.ZodType<Prisma.MediaUpdateManyMutationInput> =
   z
     .object({
+<<<<<<< HEAD
       media_id: z
+=======
+      mediaId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       media_url: z
+=======
+      mediaUrl: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       media_type: z
+=======
+      mediaType: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -1943,25 +2893,41 @@ export const MediaUpdateManyMutationInputSchema: z.ZodType<Prisma.MediaUpdateMan
 export const MediaUncheckedUpdateManyInputSchema: z.ZodType<Prisma.MediaUncheckedUpdateManyInput> =
   z
     .object({
+<<<<<<< HEAD
       media_id: z
+=======
+      mediaId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       media_url: z
+=======
+      mediaUrl: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       media_type: z
+=======
+      mediaType: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -2082,6 +3048,7 @@ export const LikeOrderByRelationAggregateInputSchema: z.ZodType<Prisma.LikeOrder
 export const UserCountOrderByAggregateInputSchema: z.ZodType<Prisma.UserCountOrderByAggregateInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z.lazy(() => SortOrderSchema).optional(),
       username: z.lazy(() => SortOrderSchema).optional(),
       email: z.lazy(() => SortOrderSchema).optional(),
@@ -2089,12 +3056,22 @@ export const UserCountOrderByAggregateInputSchema: z.ZodType<Prisma.UserCountOrd
       profile_picture: z.lazy(() => SortOrderSchema).optional(),
       bio: z.lazy(() => SortOrderSchema).optional(),
       full_name: z.lazy(() => SortOrderSchema).optional(),
+=======
+      userId: z.lazy(() => SortOrderSchema).optional(),
+      username: z.lazy(() => SortOrderSchema).optional(),
+      email: z.lazy(() => SortOrderSchema).optional(),
+      passwordHash: z.lazy(() => SortOrderSchema).optional(),
+      profilePicture: z.lazy(() => SortOrderSchema).optional(),
+      bio: z.lazy(() => SortOrderSchema).optional(),
+      fullName: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const UserMaxOrderByAggregateInputSchema: z.ZodType<Prisma.UserMaxOrderByAggregateInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z.lazy(() => SortOrderSchema).optional(),
       username: z.lazy(() => SortOrderSchema).optional(),
       email: z.lazy(() => SortOrderSchema).optional(),
@@ -2102,12 +3079,22 @@ export const UserMaxOrderByAggregateInputSchema: z.ZodType<Prisma.UserMaxOrderBy
       profile_picture: z.lazy(() => SortOrderSchema).optional(),
       bio: z.lazy(() => SortOrderSchema).optional(),
       full_name: z.lazy(() => SortOrderSchema).optional(),
+=======
+      userId: z.lazy(() => SortOrderSchema).optional(),
+      username: z.lazy(() => SortOrderSchema).optional(),
+      email: z.lazy(() => SortOrderSchema).optional(),
+      passwordHash: z.lazy(() => SortOrderSchema).optional(),
+      profilePicture: z.lazy(() => SortOrderSchema).optional(),
+      bio: z.lazy(() => SortOrderSchema).optional(),
+      fullName: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const UserMinOrderByAggregateInputSchema: z.ZodType<Prisma.UserMinOrderByAggregateInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z.lazy(() => SortOrderSchema).optional(),
       username: z.lazy(() => SortOrderSchema).optional(),
       email: z.lazy(() => SortOrderSchema).optional(),
@@ -2115,6 +3102,15 @@ export const UserMinOrderByAggregateInputSchema: z.ZodType<Prisma.UserMinOrderBy
       profile_picture: z.lazy(() => SortOrderSchema).optional(),
       bio: z.lazy(() => SortOrderSchema).optional(),
       full_name: z.lazy(() => SortOrderSchema).optional(),
+=======
+      userId: z.lazy(() => SortOrderSchema).optional(),
+      username: z.lazy(() => SortOrderSchema).optional(),
+      email: z.lazy(() => SortOrderSchema).optional(),
+      passwordHash: z.lazy(() => SortOrderSchema).optional(),
+      profilePicture: z.lazy(() => SortOrderSchema).optional(),
+      bio: z.lazy(() => SortOrderSchema).optional(),
+      fullName: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
@@ -2232,27 +3228,45 @@ export const MediaOrderByRelationAggregateInputSchema: z.ZodType<Prisma.MediaOrd
 export const PostCountOrderByAggregateInputSchema: z.ZodType<Prisma.PostCountOrderByAggregateInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z.lazy(() => SortOrderSchema).optional(),
       user_id: z.lazy(() => SortOrderSchema).optional(),
       created_at: z.lazy(() => SortOrderSchema).optional(),
+=======
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      createdAt: z.lazy(() => SortOrderSchema).optional(),
+      userId: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const PostMaxOrderByAggregateInputSchema: z.ZodType<Prisma.PostMaxOrderByAggregateInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z.lazy(() => SortOrderSchema).optional(),
       user_id: z.lazy(() => SortOrderSchema).optional(),
       created_at: z.lazy(() => SortOrderSchema).optional(),
+=======
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      createdAt: z.lazy(() => SortOrderSchema).optional(),
+      userId: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const PostMinOrderByAggregateInputSchema: z.ZodType<Prisma.PostMinOrderByAggregateInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z.lazy(() => SortOrderSchema).optional(),
       user_id: z.lazy(() => SortOrderSchema).optional(),
       created_at: z.lazy(() => SortOrderSchema).optional(),
+=======
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      createdAt: z.lazy(() => SortOrderSchema).optional(),
+      userId: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
@@ -2288,10 +3302,17 @@ export const PostRelationFilterSchema: z.ZodType<Prisma.PostRelationFilter> = z
 export const CommentCountOrderByAggregateInputSchema: z.ZodType<Prisma.CommentCountOrderByAggregateInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z.lazy(() => SortOrderSchema).optional(),
       user_id: z.lazy(() => SortOrderSchema).optional(),
       post_id: z.lazy(() => SortOrderSchema).optional(),
       created_at: z.lazy(() => SortOrderSchema).optional(),
+=======
+      commentId: z.lazy(() => SortOrderSchema).optional(),
+      userId: z.lazy(() => SortOrderSchema).optional(),
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      createdAt: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       content: z.lazy(() => SortOrderSchema).optional(),
     })
     .strict();
@@ -2299,10 +3320,17 @@ export const CommentCountOrderByAggregateInputSchema: z.ZodType<Prisma.CommentCo
 export const CommentMaxOrderByAggregateInputSchema: z.ZodType<Prisma.CommentMaxOrderByAggregateInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z.lazy(() => SortOrderSchema).optional(),
       user_id: z.lazy(() => SortOrderSchema).optional(),
       post_id: z.lazy(() => SortOrderSchema).optional(),
       created_at: z.lazy(() => SortOrderSchema).optional(),
+=======
+      commentId: z.lazy(() => SortOrderSchema).optional(),
+      userId: z.lazy(() => SortOrderSchema).optional(),
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      createdAt: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       content: z.lazy(() => SortOrderSchema).optional(),
     })
     .strict();
@@ -2310,10 +3338,17 @@ export const CommentMaxOrderByAggregateInputSchema: z.ZodType<Prisma.CommentMaxO
 export const CommentMinOrderByAggregateInputSchema: z.ZodType<Prisma.CommentMinOrderByAggregateInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z.lazy(() => SortOrderSchema).optional(),
       user_id: z.lazy(() => SortOrderSchema).optional(),
       post_id: z.lazy(() => SortOrderSchema).optional(),
       created_at: z.lazy(() => SortOrderSchema).optional(),
+=======
+      commentId: z.lazy(() => SortOrderSchema).optional(),
+      userId: z.lazy(() => SortOrderSchema).optional(),
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      createdAt: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       content: z.lazy(() => SortOrderSchema).optional(),
     })
     .strict();
@@ -2321,60 +3356,102 @@ export const CommentMinOrderByAggregateInputSchema: z.ZodType<Prisma.CommentMinO
 export const LikeCountOrderByAggregateInputSchema: z.ZodType<Prisma.LikeCountOrderByAggregateInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z.lazy(() => SortOrderSchema).optional(),
       user_id: z.lazy(() => SortOrderSchema).optional(),
       post_id: z.lazy(() => SortOrderSchema).optional(),
       created_at: z.lazy(() => SortOrderSchema).optional(),
+=======
+      likeId: z.lazy(() => SortOrderSchema).optional(),
+      userId: z.lazy(() => SortOrderSchema).optional(),
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      createdAt: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const LikeMaxOrderByAggregateInputSchema: z.ZodType<Prisma.LikeMaxOrderByAggregateInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z.lazy(() => SortOrderSchema).optional(),
       user_id: z.lazy(() => SortOrderSchema).optional(),
       post_id: z.lazy(() => SortOrderSchema).optional(),
       created_at: z.lazy(() => SortOrderSchema).optional(),
+=======
+      likeId: z.lazy(() => SortOrderSchema).optional(),
+      userId: z.lazy(() => SortOrderSchema).optional(),
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      createdAt: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const LikeMinOrderByAggregateInputSchema: z.ZodType<Prisma.LikeMinOrderByAggregateInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z.lazy(() => SortOrderSchema).optional(),
       user_id: z.lazy(() => SortOrderSchema).optional(),
       post_id: z.lazy(() => SortOrderSchema).optional(),
       created_at: z.lazy(() => SortOrderSchema).optional(),
+=======
+      likeId: z.lazy(() => SortOrderSchema).optional(),
+      userId: z.lazy(() => SortOrderSchema).optional(),
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      createdAt: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const MediaCountOrderByAggregateInputSchema: z.ZodType<Prisma.MediaCountOrderByAggregateInput> =
   z
     .object({
+<<<<<<< HEAD
       media_id: z.lazy(() => SortOrderSchema).optional(),
       post_id: z.lazy(() => SortOrderSchema).optional(),
       media_url: z.lazy(() => SortOrderSchema).optional(),
       media_type: z.lazy(() => SortOrderSchema).optional(),
+=======
+      mediaId: z.lazy(() => SortOrderSchema).optional(),
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      mediaUrl: z.lazy(() => SortOrderSchema).optional(),
+      mediaType: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const MediaMaxOrderByAggregateInputSchema: z.ZodType<Prisma.MediaMaxOrderByAggregateInput> =
   z
     .object({
+<<<<<<< HEAD
       media_id: z.lazy(() => SortOrderSchema).optional(),
       post_id: z.lazy(() => SortOrderSchema).optional(),
       media_url: z.lazy(() => SortOrderSchema).optional(),
       media_type: z.lazy(() => SortOrderSchema).optional(),
+=======
+      mediaId: z.lazy(() => SortOrderSchema).optional(),
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      mediaUrl: z.lazy(() => SortOrderSchema).optional(),
+      mediaType: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const MediaMinOrderByAggregateInputSchema: z.ZodType<Prisma.MediaMinOrderByAggregateInput> =
   z
     .object({
+<<<<<<< HEAD
       media_id: z.lazy(() => SortOrderSchema).optional(),
       post_id: z.lazy(() => SortOrderSchema).optional(),
       media_url: z.lazy(() => SortOrderSchema).optional(),
       media_type: z.lazy(() => SortOrderSchema).optional(),
+=======
+      mediaId: z.lazy(() => SortOrderSchema).optional(),
+      postId: z.lazy(() => SortOrderSchema).optional(),
+      mediaUrl: z.lazy(() => SortOrderSchema).optional(),
+      mediaType: z.lazy(() => SortOrderSchema).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
@@ -4063,8 +5140,13 @@ export const NestedDateTimeWithAggregatesFilterSchema: z.ZodType<Prisma.NestedDa
 export const PostCreateWithoutUserInputSchema: z.ZodType<Prisma.PostCreateWithoutUserInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z.string().optional(),
       created_at: z.coerce.date().optional(),
+=======
+      postId: z.string().optional(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       comments: z
         .lazy(() => CommentCreateNestedManyWithoutPostInputSchema)
         .optional(),
@@ -4080,8 +5162,13 @@ export const PostCreateWithoutUserInputSchema: z.ZodType<Prisma.PostCreateWithou
 export const PostUncheckedCreateWithoutUserInputSchema: z.ZodType<Prisma.PostUncheckedCreateWithoutUserInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z.string().optional(),
       created_at: z.coerce.date().optional(),
+=======
+      postId: z.string().optional(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       comments: z
         .lazy(() => CommentUncheckedCreateNestedManyWithoutPostInputSchema)
         .optional(),
@@ -4119,8 +5206,13 @@ export const PostCreateManyUserInputEnvelopeSchema: z.ZodType<Prisma.PostCreateM
 export const CommentCreateWithoutUserInputSchema: z.ZodType<Prisma.CommentCreateWithoutUserInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z.string().optional(),
       created_at: z.coerce.date().optional(),
+=======
+      commentId: z.string().optional(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       content: z.string(),
       post: z.lazy(() => PostCreateNestedOneWithoutCommentsInputSchema),
     })
@@ -4129,9 +5221,15 @@ export const CommentCreateWithoutUserInputSchema: z.ZodType<Prisma.CommentCreate
 export const CommentUncheckedCreateWithoutUserInputSchema: z.ZodType<Prisma.CommentUncheckedCreateWithoutUserInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z.string().optional(),
       post_id: z.string(),
       created_at: z.coerce.date().optional(),
+=======
+      commentId: z.string().optional(),
+      postId: z.string(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       content: z.string(),
     })
     .strict();
@@ -4161,8 +5259,13 @@ export const CommentCreateManyUserInputEnvelopeSchema: z.ZodType<Prisma.CommentC
 export const LikeCreateWithoutUserInputSchema: z.ZodType<Prisma.LikeCreateWithoutUserInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z.string().optional(),
       created_at: z.coerce.date().optional(),
+=======
+      likeId: z.string().optional(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       post: z.lazy(() => PostCreateNestedOneWithoutLikesInputSchema),
     })
     .strict();
@@ -4170,9 +5273,15 @@ export const LikeCreateWithoutUserInputSchema: z.ZodType<Prisma.LikeCreateWithou
 export const LikeUncheckedCreateWithoutUserInputSchema: z.ZodType<Prisma.LikeUncheckedCreateWithoutUserInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z.string().optional(),
       post_id: z.string(),
       created_at: z.coerce.date().optional(),
+=======
+      likeId: z.string().optional(),
+      postId: z.string(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
@@ -4254,11 +5363,19 @@ export const PostScalarWhereInputSchema: z.ZodType<Prisma.PostScalarWhereInput> 
           z.lazy(() => PostScalarWhereInputSchema).array(),
         ])
         .optional(),
+<<<<<<< HEAD
       post_id: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
       user_id: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
       created_at: z
         .union([z.lazy(() => DateTimeFilterSchema), z.coerce.date()])
         .optional(),
+=======
+      postId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+      createdAt: z
+        .union([z.lazy(() => DateTimeFilterSchema), z.coerce.date()])
+        .optional(),
+      userId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
@@ -4318,12 +5435,21 @@ export const CommentScalarWhereInputSchema: z.ZodType<Prisma.CommentScalarWhereI
           z.lazy(() => CommentScalarWhereInputSchema).array(),
         ])
         .optional(),
+<<<<<<< HEAD
       comment_id: z
         .union([z.lazy(() => UuidFilterSchema), z.string()])
         .optional(),
       user_id: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
       post_id: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
       created_at: z
+=======
+      commentId: z
+        .union([z.lazy(() => UuidFilterSchema), z.string()])
+        .optional(),
+      userId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+      postId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([z.lazy(() => DateTimeFilterSchema), z.coerce.date()])
         .optional(),
       content: z
@@ -4388,12 +5514,19 @@ export const LikeScalarWhereInputSchema: z.ZodType<Prisma.LikeScalarWhereInput> 
           z.lazy(() => LikeScalarWhereInputSchema).array(),
         ])
         .optional(),
+<<<<<<< HEAD
       likes_id: z
         .union([z.lazy(() => UuidFilterSchema), z.string()])
         .optional(),
       user_id: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
       post_id: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
       created_at: z
+=======
+      likeId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+      userId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+      postId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([z.lazy(() => DateTimeFilterSchema), z.coerce.date()])
         .optional(),
     })
@@ -4402,6 +5535,7 @@ export const LikeScalarWhereInputSchema: z.ZodType<Prisma.LikeScalarWhereInput> 
 export const UserCreateWithoutPostsInputSchema: z.ZodType<Prisma.UserCreateWithoutPostsInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z.string().optional(),
       username: z.string(),
       email: z.string(),
@@ -4409,6 +5543,15 @@ export const UserCreateWithoutPostsInputSchema: z.ZodType<Prisma.UserCreateWitho
       profile_picture: z.string().optional().nullable(),
       bio: z.string().optional().nullable(),
       full_name: z.string(),
+=======
+      userId: z.string().optional(),
+      username: z.string(),
+      email: z.string(),
+      passwordHash: z.string(),
+      profilePicture: z.string().optional().nullable(),
+      bio: z.string().optional().nullable(),
+      fullName: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       comments: z
         .lazy(() => CommentCreateNestedManyWithoutUserInputSchema)
         .optional(),
@@ -4421,6 +5564,7 @@ export const UserCreateWithoutPostsInputSchema: z.ZodType<Prisma.UserCreateWitho
 export const UserUncheckedCreateWithoutPostsInputSchema: z.ZodType<Prisma.UserUncheckedCreateWithoutPostsInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z.string().optional(),
       username: z.string(),
       email: z.string(),
@@ -4428,6 +5572,15 @@ export const UserUncheckedCreateWithoutPostsInputSchema: z.ZodType<Prisma.UserUn
       profile_picture: z.string().optional().nullable(),
       bio: z.string().optional().nullable(),
       full_name: z.string(),
+=======
+      userId: z.string().optional(),
+      username: z.string(),
+      email: z.string(),
+      passwordHash: z.string(),
+      profilePicture: z.string().optional().nullable(),
+      bio: z.string().optional().nullable(),
+      fullName: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       comments: z
         .lazy(() => CommentUncheckedCreateNestedManyWithoutUserInputSchema)
         .optional(),
@@ -4451,8 +5604,13 @@ export const UserCreateOrConnectWithoutPostsInputSchema: z.ZodType<Prisma.UserCr
 export const CommentCreateWithoutPostInputSchema: z.ZodType<Prisma.CommentCreateWithoutPostInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z.string().optional(),
       created_at: z.coerce.date().optional(),
+=======
+      commentId: z.string().optional(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       content: z.string(),
       user: z.lazy(() => UserCreateNestedOneWithoutCommentsInputSchema),
     })
@@ -4461,9 +5619,15 @@ export const CommentCreateWithoutPostInputSchema: z.ZodType<Prisma.CommentCreate
 export const CommentUncheckedCreateWithoutPostInputSchema: z.ZodType<Prisma.CommentUncheckedCreateWithoutPostInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z.string().optional(),
       user_id: z.string(),
       created_at: z.coerce.date().optional(),
+=======
+      commentId: z.string().optional(),
+      userId: z.string(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       content: z.string(),
     })
     .strict();
@@ -4493,8 +5657,13 @@ export const CommentCreateManyPostInputEnvelopeSchema: z.ZodType<Prisma.CommentC
 export const LikeCreateWithoutPostInputSchema: z.ZodType<Prisma.LikeCreateWithoutPostInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z.string().optional(),
       created_at: z.coerce.date().optional(),
+=======
+      likeId: z.string().optional(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       user: z.lazy(() => UserCreateNestedOneWithoutLikesInputSchema),
     })
     .strict();
@@ -4502,9 +5671,15 @@ export const LikeCreateWithoutPostInputSchema: z.ZodType<Prisma.LikeCreateWithou
 export const LikeUncheckedCreateWithoutPostInputSchema: z.ZodType<Prisma.LikeUncheckedCreateWithoutPostInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z.string().optional(),
       user_id: z.string(),
       created_at: z.coerce.date().optional(),
+=======
+      likeId: z.string().optional(),
+      userId: z.string(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
@@ -4533,18 +5708,30 @@ export const LikeCreateManyPostInputEnvelopeSchema: z.ZodType<Prisma.LikeCreateM
 export const MediaCreateWithoutPostInputSchema: z.ZodType<Prisma.MediaCreateWithoutPostInput> =
   z
     .object({
+<<<<<<< HEAD
       media_id: z.string().optional(),
       media_url: z.string(),
       media_type: z.string(),
+=======
+      mediaId: z.string().optional(),
+      mediaUrl: z.string(),
+      mediaType: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const MediaUncheckedCreateWithoutPostInputSchema: z.ZodType<Prisma.MediaUncheckedCreateWithoutPostInput> =
   z
     .object({
+<<<<<<< HEAD
       media_id: z.string().optional(),
       media_url: z.string(),
       media_type: z.string(),
+=======
+      mediaId: z.string().optional(),
+      mediaUrl: z.string(),
+      mediaType: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
@@ -4599,7 +5786,11 @@ export const UserUpdateToOneWithWhereWithoutPostsInputSchema: z.ZodType<Prisma.U
 export const UserUpdateWithoutPostsInputSchema: z.ZodType<Prisma.UserUpdateWithoutPostsInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -4617,13 +5808,21 @@ export const UserUpdateWithoutPostsInputSchema: z.ZodType<Prisma.UserUpdateWitho
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       password_hash: z
+=======
+      passwordHash: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       profile_picture: z
+=======
+      profilePicture: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => NullableStringFieldUpdateOperationsInputSchema),
@@ -4637,7 +5836,11 @@ export const UserUpdateWithoutPostsInputSchema: z.ZodType<Prisma.UserUpdateWitho
         ])
         .optional()
         .nullable(),
+<<<<<<< HEAD
       full_name: z
+=======
+      fullName: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -4655,7 +5858,11 @@ export const UserUpdateWithoutPostsInputSchema: z.ZodType<Prisma.UserUpdateWitho
 export const UserUncheckedUpdateWithoutPostsInputSchema: z.ZodType<Prisma.UserUncheckedUpdateWithoutPostsInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -4673,13 +5880,21 @@ export const UserUncheckedUpdateWithoutPostsInputSchema: z.ZodType<Prisma.UserUn
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       password_hash: z
+=======
+      passwordHash: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       profile_picture: z
+=======
+      profilePicture: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => NullableStringFieldUpdateOperationsInputSchema),
@@ -4693,7 +5908,11 @@ export const UserUncheckedUpdateWithoutPostsInputSchema: z.ZodType<Prisma.UserUn
         ])
         .optional()
         .nullable(),
+<<<<<<< HEAD
       full_name: z
+=======
+      fullName: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -4838,6 +6057,7 @@ export const MediaScalarWhereInputSchema: z.ZodType<Prisma.MediaScalarWhereInput
           z.lazy(() => MediaScalarWhereInputSchema).array(),
         ])
         .optional(),
+<<<<<<< HEAD
       media_id: z
         .union([z.lazy(() => UuidFilterSchema), z.string()])
         .optional(),
@@ -4846,6 +6066,14 @@ export const MediaScalarWhereInputSchema: z.ZodType<Prisma.MediaScalarWhereInput
         .union([z.lazy(() => StringFilterSchema), z.string()])
         .optional(),
       media_type: z
+=======
+      mediaId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+      postId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+      mediaUrl: z
+        .union([z.lazy(() => StringFilterSchema), z.string()])
+        .optional(),
+      mediaType: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([z.lazy(() => StringFilterSchema), z.string()])
         .optional(),
     })
@@ -4854,6 +6082,7 @@ export const MediaScalarWhereInputSchema: z.ZodType<Prisma.MediaScalarWhereInput
 export const UserCreateWithoutCommentsInputSchema: z.ZodType<Prisma.UserCreateWithoutCommentsInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z.string().optional(),
       username: z.string(),
       email: z.string(),
@@ -4861,6 +6090,15 @@ export const UserCreateWithoutCommentsInputSchema: z.ZodType<Prisma.UserCreateWi
       profile_picture: z.string().optional().nullable(),
       bio: z.string().optional().nullable(),
       full_name: z.string(),
+=======
+      userId: z.string().optional(),
+      username: z.string(),
+      email: z.string(),
+      passwordHash: z.string(),
+      profilePicture: z.string().optional().nullable(),
+      bio: z.string().optional().nullable(),
+      fullName: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       posts: z
         .lazy(() => PostCreateNestedManyWithoutUserInputSchema)
         .optional(),
@@ -4873,6 +6111,7 @@ export const UserCreateWithoutCommentsInputSchema: z.ZodType<Prisma.UserCreateWi
 export const UserUncheckedCreateWithoutCommentsInputSchema: z.ZodType<Prisma.UserUncheckedCreateWithoutCommentsInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z.string().optional(),
       username: z.string(),
       email: z.string(),
@@ -4880,6 +6119,15 @@ export const UserUncheckedCreateWithoutCommentsInputSchema: z.ZodType<Prisma.Use
       profile_picture: z.string().optional().nullable(),
       bio: z.string().optional().nullable(),
       full_name: z.string(),
+=======
+      userId: z.string().optional(),
+      username: z.string(),
+      email: z.string(),
+      passwordHash: z.string(),
+      profilePicture: z.string().optional().nullable(),
+      bio: z.string().optional().nullable(),
+      fullName: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       posts: z
         .lazy(() => PostUncheckedCreateNestedManyWithoutUserInputSchema)
         .optional(),
@@ -4903,8 +6151,13 @@ export const UserCreateOrConnectWithoutCommentsInputSchema: z.ZodType<Prisma.Use
 export const PostCreateWithoutCommentsInputSchema: z.ZodType<Prisma.PostCreateWithoutCommentsInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z.string().optional(),
       created_at: z.coerce.date().optional(),
+=======
+      postId: z.string().optional(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       user: z.lazy(() => UserCreateNestedOneWithoutPostsInputSchema),
       likes: z
         .lazy(() => LikeCreateNestedManyWithoutPostInputSchema)
@@ -4918,9 +6171,15 @@ export const PostCreateWithoutCommentsInputSchema: z.ZodType<Prisma.PostCreateWi
 export const PostUncheckedCreateWithoutCommentsInputSchema: z.ZodType<Prisma.PostUncheckedCreateWithoutCommentsInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z.string().optional(),
       user_id: z.string(),
       created_at: z.coerce.date().optional(),
+=======
+      postId: z.string().optional(),
+      createdAt: z.coerce.date().optional(),
+      userId: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       likes: z
         .lazy(() => LikeUncheckedCreateNestedManyWithoutPostInputSchema)
         .optional(),
@@ -4970,7 +6229,11 @@ export const UserUpdateToOneWithWhereWithoutCommentsInputSchema: z.ZodType<Prism
 export const UserUpdateWithoutCommentsInputSchema: z.ZodType<Prisma.UserUpdateWithoutCommentsInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -4988,13 +6251,21 @@ export const UserUpdateWithoutCommentsInputSchema: z.ZodType<Prisma.UserUpdateWi
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       password_hash: z
+=======
+      passwordHash: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       profile_picture: z
+=======
+      profilePicture: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => NullableStringFieldUpdateOperationsInputSchema),
@@ -5008,7 +6279,11 @@ export const UserUpdateWithoutCommentsInputSchema: z.ZodType<Prisma.UserUpdateWi
         ])
         .optional()
         .nullable(),
+<<<<<<< HEAD
       full_name: z
+=======
+      fullName: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -5026,7 +6301,11 @@ export const UserUpdateWithoutCommentsInputSchema: z.ZodType<Prisma.UserUpdateWi
 export const UserUncheckedUpdateWithoutCommentsInputSchema: z.ZodType<Prisma.UserUncheckedUpdateWithoutCommentsInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -5044,13 +6323,21 @@ export const UserUncheckedUpdateWithoutCommentsInputSchema: z.ZodType<Prisma.Use
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       password_hash: z
+=======
+      passwordHash: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       profile_picture: z
+=======
+      profilePicture: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => NullableStringFieldUpdateOperationsInputSchema),
@@ -5064,7 +6351,11 @@ export const UserUncheckedUpdateWithoutCommentsInputSchema: z.ZodType<Prisma.Use
         ])
         .optional()
         .nullable(),
+<<<<<<< HEAD
       full_name: z
+=======
+      fullName: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -5108,13 +6399,21 @@ export const PostUpdateToOneWithWhereWithoutCommentsInputSchema: z.ZodType<Prism
 export const PostUpdateWithoutCommentsInputSchema: z.ZodType<Prisma.PostUpdateWithoutCommentsInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -5135,12 +6434,17 @@ export const PostUpdateWithoutCommentsInputSchema: z.ZodType<Prisma.PostUpdateWi
 export const PostUncheckedUpdateWithoutCommentsInputSchema: z.ZodType<Prisma.PostUncheckedUpdateWithoutCommentsInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       user_id: z
         .union([
           z.string(),
@@ -5148,11 +6452,23 @@ export const PostUncheckedUpdateWithoutCommentsInputSchema: z.ZodType<Prisma.Pos
         ])
         .optional(),
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
+=======
+      userId: z
+        .union([
+          z.string(),
+          z.lazy(() => StringFieldUpdateOperationsInputSchema),
+        ])
+        .optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       likes: z
         .lazy(() => LikeUncheckedUpdateManyWithoutPostNestedInputSchema)
         .optional(),
@@ -5165,6 +6481,7 @@ export const PostUncheckedUpdateWithoutCommentsInputSchema: z.ZodType<Prisma.Pos
 export const UserCreateWithoutLikesInputSchema: z.ZodType<Prisma.UserCreateWithoutLikesInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z.string().optional(),
       username: z.string(),
       email: z.string(),
@@ -5172,6 +6489,15 @@ export const UserCreateWithoutLikesInputSchema: z.ZodType<Prisma.UserCreateWitho
       profile_picture: z.string().optional().nullable(),
       bio: z.string().optional().nullable(),
       full_name: z.string(),
+=======
+      userId: z.string().optional(),
+      username: z.string(),
+      email: z.string(),
+      passwordHash: z.string(),
+      profilePicture: z.string().optional().nullable(),
+      bio: z.string().optional().nullable(),
+      fullName: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       posts: z
         .lazy(() => PostCreateNestedManyWithoutUserInputSchema)
         .optional(),
@@ -5184,6 +6510,7 @@ export const UserCreateWithoutLikesInputSchema: z.ZodType<Prisma.UserCreateWitho
 export const UserUncheckedCreateWithoutLikesInputSchema: z.ZodType<Prisma.UserUncheckedCreateWithoutLikesInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z.string().optional(),
       username: z.string(),
       email: z.string(),
@@ -5191,6 +6518,15 @@ export const UserUncheckedCreateWithoutLikesInputSchema: z.ZodType<Prisma.UserUn
       profile_picture: z.string().optional().nullable(),
       bio: z.string().optional().nullable(),
       full_name: z.string(),
+=======
+      userId: z.string().optional(),
+      username: z.string(),
+      email: z.string(),
+      passwordHash: z.string(),
+      profilePicture: z.string().optional().nullable(),
+      bio: z.string().optional().nullable(),
+      fullName: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       posts: z
         .lazy(() => PostUncheckedCreateNestedManyWithoutUserInputSchema)
         .optional(),
@@ -5214,8 +6550,13 @@ export const UserCreateOrConnectWithoutLikesInputSchema: z.ZodType<Prisma.UserCr
 export const PostCreateWithoutLikesInputSchema: z.ZodType<Prisma.PostCreateWithoutLikesInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z.string().optional(),
       created_at: z.coerce.date().optional(),
+=======
+      postId: z.string().optional(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       user: z.lazy(() => UserCreateNestedOneWithoutPostsInputSchema),
       comments: z
         .lazy(() => CommentCreateNestedManyWithoutPostInputSchema)
@@ -5229,9 +6570,15 @@ export const PostCreateWithoutLikesInputSchema: z.ZodType<Prisma.PostCreateWitho
 export const PostUncheckedCreateWithoutLikesInputSchema: z.ZodType<Prisma.PostUncheckedCreateWithoutLikesInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z.string().optional(),
       user_id: z.string(),
       created_at: z.coerce.date().optional(),
+=======
+      postId: z.string().optional(),
+      createdAt: z.coerce.date().optional(),
+      userId: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       comments: z
         .lazy(() => CommentUncheckedCreateNestedManyWithoutPostInputSchema)
         .optional(),
@@ -5281,7 +6628,11 @@ export const UserUpdateToOneWithWhereWithoutLikesInputSchema: z.ZodType<Prisma.U
 export const UserUpdateWithoutLikesInputSchema: z.ZodType<Prisma.UserUpdateWithoutLikesInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -5299,13 +6650,21 @@ export const UserUpdateWithoutLikesInputSchema: z.ZodType<Prisma.UserUpdateWitho
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       password_hash: z
+=======
+      passwordHash: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       profile_picture: z
+=======
+      profilePicture: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => NullableStringFieldUpdateOperationsInputSchema),
@@ -5319,7 +6678,11 @@ export const UserUpdateWithoutLikesInputSchema: z.ZodType<Prisma.UserUpdateWitho
         ])
         .optional()
         .nullable(),
+<<<<<<< HEAD
       full_name: z
+=======
+      fullName: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -5337,7 +6700,11 @@ export const UserUpdateWithoutLikesInputSchema: z.ZodType<Prisma.UserUpdateWitho
 export const UserUncheckedUpdateWithoutLikesInputSchema: z.ZodType<Prisma.UserUncheckedUpdateWithoutLikesInput> =
   z
     .object({
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -5355,13 +6722,21 @@ export const UserUncheckedUpdateWithoutLikesInputSchema: z.ZodType<Prisma.UserUn
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       password_hash: z
+=======
+      passwordHash: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       profile_picture: z
+=======
+      profilePicture: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => NullableStringFieldUpdateOperationsInputSchema),
@@ -5375,7 +6750,11 @@ export const UserUncheckedUpdateWithoutLikesInputSchema: z.ZodType<Prisma.UserUn
         ])
         .optional()
         .nullable(),
+<<<<<<< HEAD
       full_name: z
+=======
+      fullName: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -5419,13 +6798,21 @@ export const PostUpdateToOneWithWhereWithoutLikesInputSchema: z.ZodType<Prisma.P
 export const PostUpdateWithoutLikesInputSchema: z.ZodType<Prisma.PostUpdateWithoutLikesInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -5446,12 +6833,17 @@ export const PostUpdateWithoutLikesInputSchema: z.ZodType<Prisma.PostUpdateWitho
 export const PostUncheckedUpdateWithoutLikesInputSchema: z.ZodType<Prisma.PostUncheckedUpdateWithoutLikesInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       user_id: z
         .union([
           z.string(),
@@ -5459,11 +6851,23 @@ export const PostUncheckedUpdateWithoutLikesInputSchema: z.ZodType<Prisma.PostUn
         ])
         .optional(),
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
+=======
+      userId: z
+        .union([
+          z.string(),
+          z.lazy(() => StringFieldUpdateOperationsInputSchema),
+        ])
+        .optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       comments: z
         .lazy(() => CommentUncheckedUpdateManyWithoutPostNestedInputSchema)
         .optional(),
@@ -5476,8 +6880,13 @@ export const PostUncheckedUpdateWithoutLikesInputSchema: z.ZodType<Prisma.PostUn
 export const PostCreateWithoutMediaInputSchema: z.ZodType<Prisma.PostCreateWithoutMediaInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z.string().optional(),
       created_at: z.coerce.date().optional(),
+=======
+      postId: z.string().optional(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       user: z.lazy(() => UserCreateNestedOneWithoutPostsInputSchema),
       comments: z
         .lazy(() => CommentCreateNestedManyWithoutPostInputSchema)
@@ -5491,9 +6900,15 @@ export const PostCreateWithoutMediaInputSchema: z.ZodType<Prisma.PostCreateWitho
 export const PostUncheckedCreateWithoutMediaInputSchema: z.ZodType<Prisma.PostUncheckedCreateWithoutMediaInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z.string().optional(),
       user_id: z.string(),
       created_at: z.coerce.date().optional(),
+=======
+      postId: z.string().optional(),
+      createdAt: z.coerce.date().optional(),
+      userId: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       comments: z
         .lazy(() => CommentUncheckedCreateNestedManyWithoutPostInputSchema)
         .optional(),
@@ -5543,13 +6958,21 @@ export const PostUpdateToOneWithWhereWithoutMediaInputSchema: z.ZodType<Prisma.P
 export const PostUpdateWithoutMediaInputSchema: z.ZodType<Prisma.PostUpdateWithoutMediaInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -5570,12 +6993,17 @@ export const PostUpdateWithoutMediaInputSchema: z.ZodType<Prisma.PostUpdateWitho
 export const PostUncheckedUpdateWithoutMediaInputSchema: z.ZodType<Prisma.PostUncheckedUpdateWithoutMediaInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       user_id: z
         .union([
           z.string(),
@@ -5583,11 +7011,23 @@ export const PostUncheckedUpdateWithoutMediaInputSchema: z.ZodType<Prisma.PostUn
         ])
         .optional(),
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
+=======
+      userId: z
+        .union([
+          z.string(),
+          z.lazy(() => StringFieldUpdateOperationsInputSchema),
+        ])
+        .optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       comments: z
         .lazy(() => CommentUncheckedUpdateManyWithoutPostNestedInputSchema)
         .optional(),
@@ -5600,17 +7040,28 @@ export const PostUncheckedUpdateWithoutMediaInputSchema: z.ZodType<Prisma.PostUn
 export const PostCreateManyUserInputSchema: z.ZodType<Prisma.PostCreateManyUserInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z.string().optional(),
       created_at: z.coerce.date().optional(),
+=======
+      postId: z.string().optional(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const CommentCreateManyUserInputSchema: z.ZodType<Prisma.CommentCreateManyUserInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z.string().optional(),
       post_id: z.string(),
       created_at: z.coerce.date().optional(),
+=======
+      commentId: z.string().optional(),
+      postId: z.string(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       content: z.string(),
     })
     .strict();
@@ -5618,22 +7069,36 @@ export const CommentCreateManyUserInputSchema: z.ZodType<Prisma.CommentCreateMan
 export const LikeCreateManyUserInputSchema: z.ZodType<Prisma.LikeCreateManyUserInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z.string().optional(),
       post_id: z.string(),
       created_at: z.coerce.date().optional(),
+=======
+      likeId: z.string().optional(),
+      postId: z.string(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const PostUpdateWithoutUserInputSchema: z.ZodType<Prisma.PostUpdateWithoutUserInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -5654,13 +7119,21 @@ export const PostUpdateWithoutUserInputSchema: z.ZodType<Prisma.PostUpdateWithou
 export const PostUncheckedUpdateWithoutUserInputSchema: z.ZodType<Prisma.PostUncheckedUpdateWithoutUserInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -5681,13 +7154,21 @@ export const PostUncheckedUpdateWithoutUserInputSchema: z.ZodType<Prisma.PostUnc
 export const PostUncheckedUpdateManyWithoutUserInputSchema: z.ZodType<Prisma.PostUncheckedUpdateManyWithoutUserInput> =
   z
     .object({
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -5699,13 +7180,21 @@ export const PostUncheckedUpdateManyWithoutUserInputSchema: z.ZodType<Prisma.Pos
 export const CommentUpdateWithoutUserInputSchema: z.ZodType<Prisma.CommentUpdateWithoutUserInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z
+=======
+      commentId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -5726,19 +7215,31 @@ export const CommentUpdateWithoutUserInputSchema: z.ZodType<Prisma.CommentUpdate
 export const CommentUncheckedUpdateWithoutUserInputSchema: z.ZodType<Prisma.CommentUncheckedUpdateWithoutUserInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z
+=======
+      commentId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -5756,19 +7257,31 @@ export const CommentUncheckedUpdateWithoutUserInputSchema: z.ZodType<Prisma.Comm
 export const CommentUncheckedUpdateManyWithoutUserInputSchema: z.ZodType<Prisma.CommentUncheckedUpdateManyWithoutUserInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z
+=======
+      commentId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -5786,13 +7299,21 @@ export const CommentUncheckedUpdateManyWithoutUserInputSchema: z.ZodType<Prisma.
 export const LikeUpdateWithoutUserInputSchema: z.ZodType<Prisma.LikeUpdateWithoutUserInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z
+=======
+      likeId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -5807,19 +7328,31 @@ export const LikeUpdateWithoutUserInputSchema: z.ZodType<Prisma.LikeUpdateWithou
 export const LikeUncheckedUpdateWithoutUserInputSchema: z.ZodType<Prisma.LikeUncheckedUpdateWithoutUserInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z
+=======
+      likeId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -5831,19 +7364,31 @@ export const LikeUncheckedUpdateWithoutUserInputSchema: z.ZodType<Prisma.LikeUnc
 export const LikeUncheckedUpdateManyWithoutUserInputSchema: z.ZodType<Prisma.LikeUncheckedUpdateManyWithoutUserInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z
+=======
+      likeId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       post_id: z
+=======
+      postId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -5855,9 +7400,15 @@ export const LikeUncheckedUpdateManyWithoutUserInputSchema: z.ZodType<Prisma.Lik
 export const CommentCreateManyPostInputSchema: z.ZodType<Prisma.CommentCreateManyPostInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z.string().optional(),
       user_id: z.string(),
       created_at: z.coerce.date().optional(),
+=======
+      commentId: z.string().optional(),
+      userId: z.string(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
       content: z.string(),
     })
     .strict();
@@ -5865,31 +7416,51 @@ export const CommentCreateManyPostInputSchema: z.ZodType<Prisma.CommentCreateMan
 export const LikeCreateManyPostInputSchema: z.ZodType<Prisma.LikeCreateManyPostInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z.string().optional(),
       user_id: z.string(),
       created_at: z.coerce.date().optional(),
+=======
+      likeId: z.string().optional(),
+      userId: z.string(),
+      createdAt: z.coerce.date().optional(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const MediaCreateManyPostInputSchema: z.ZodType<Prisma.MediaCreateManyPostInput> =
   z
     .object({
+<<<<<<< HEAD
       media_id: z.string().optional(),
       media_url: z.string(),
       media_type: z.string(),
+=======
+      mediaId: z.string().optional(),
+      mediaUrl: z.string(),
+      mediaType: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
     })
     .strict();
 
 export const CommentUpdateWithoutPostInputSchema: z.ZodType<Prisma.CommentUpdateWithoutPostInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z
+=======
+      commentId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -5910,19 +7481,31 @@ export const CommentUpdateWithoutPostInputSchema: z.ZodType<Prisma.CommentUpdate
 export const CommentUncheckedUpdateWithoutPostInputSchema: z.ZodType<Prisma.CommentUncheckedUpdateWithoutPostInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z
+=======
+      commentId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -5940,19 +7523,31 @@ export const CommentUncheckedUpdateWithoutPostInputSchema: z.ZodType<Prisma.Comm
 export const CommentUncheckedUpdateManyWithoutPostInputSchema: z.ZodType<Prisma.CommentUncheckedUpdateManyWithoutPostInput> =
   z
     .object({
+<<<<<<< HEAD
       comment_id: z
+=======
+      commentId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -5970,13 +7565,21 @@ export const CommentUncheckedUpdateManyWithoutPostInputSchema: z.ZodType<Prisma.
 export const LikeUpdateWithoutPostInputSchema: z.ZodType<Prisma.LikeUpdateWithoutPostInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z
+=======
+      likeId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -5991,19 +7594,31 @@ export const LikeUpdateWithoutPostInputSchema: z.ZodType<Prisma.LikeUpdateWithou
 export const LikeUncheckedUpdateWithoutPostInputSchema: z.ZodType<Prisma.LikeUncheckedUpdateWithoutPostInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z
+=======
+      likeId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -6015,19 +7630,31 @@ export const LikeUncheckedUpdateWithoutPostInputSchema: z.ZodType<Prisma.LikeUnc
 export const LikeUncheckedUpdateManyWithoutPostInputSchema: z.ZodType<Prisma.LikeUncheckedUpdateManyWithoutPostInput> =
   z
     .object({
+<<<<<<< HEAD
       likes_id: z
+=======
+      likeId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       user_id: z
+=======
+      userId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       created_at: z
+=======
+      createdAt: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
@@ -6039,19 +7666,31 @@ export const LikeUncheckedUpdateManyWithoutPostInputSchema: z.ZodType<Prisma.Lik
 export const MediaUpdateWithoutPostInputSchema: z.ZodType<Prisma.MediaUpdateWithoutPostInput> =
   z
     .object({
+<<<<<<< HEAD
       media_id: z
+=======
+      mediaId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       media_url: z
+=======
+      mediaUrl: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       media_type: z
+=======
+      mediaType: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -6063,19 +7702,31 @@ export const MediaUpdateWithoutPostInputSchema: z.ZodType<Prisma.MediaUpdateWith
 export const MediaUncheckedUpdateWithoutPostInputSchema: z.ZodType<Prisma.MediaUncheckedUpdateWithoutPostInput> =
   z
     .object({
+<<<<<<< HEAD
       media_id: z
+=======
+      mediaId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       media_url: z
+=======
+      mediaUrl: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       media_type: z
+=======
+      mediaType: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -6087,19 +7738,31 @@ export const MediaUncheckedUpdateWithoutPostInputSchema: z.ZodType<Prisma.MediaU
 export const MediaUncheckedUpdateManyWithoutPostInputSchema: z.ZodType<Prisma.MediaUncheckedUpdateManyWithoutPostInput> =
   z
     .object({
+<<<<<<< HEAD
       media_id: z
+=======
+      mediaId: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       media_url: z
+=======
+      mediaUrl: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+<<<<<<< HEAD
       media_type: z
+=======
+      mediaType: z
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
