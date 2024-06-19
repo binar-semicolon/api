@@ -6,11 +6,10 @@ async function main() {
   await prisma.user.create({
     data: {
       id: "baf0014e-94cf-4980-888c-5f0d437c65f6",
+      name: "John Smith",
       username: "john.smith",
       email: "john.smith@example.com",
-      passwordHash: "hashedpassword123",
       bio: "Software developer.",
-      fullName: "John Smith",
     },
   });
 }

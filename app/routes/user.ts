@@ -2,7 +2,6 @@ import { PrismaClient } from "@prisma/client";
 import { router, publicProcedure } from "@semicolon/api/app/trpc";
 import { UserSchema } from "@semicolon/api/prisma/generated/zod";
 import { TRPCError } from "@trpc/server";
-import _ from "lodash";
 import { z } from "zod";
 
 const prisma = new PrismaClient();
@@ -11,7 +10,7 @@ export const user = router({
   get: publicProcedure
     .meta({ openapi: { method: "GET", path: "/user/id/{id}" } })
     .input(z.object({ id: z.string().uuid() }))
-    .output(UserSchema.omit({ passwordHash: true }))
+    .output(UserSchema)
     .query(async ({ input: { id } }) => {
       const user = await prisma.user.findUnique({
         where: { id },
@@ -24,6 +23,6 @@ export const user = router({
         });
       }
 
-      return _.omit(user, "passwordHash");
+      return user;
     }),
 });
