@@ -14,7 +14,7 @@ export const user = router({
     .output(UserSchema.omit({ passwordHash: true }))
     .query(async ({ input: { id } }) => {
       const user = await prisma.user.findUnique({
-        where: { userId: id },
+        where: { id },
       });
 
       if (!user) {
