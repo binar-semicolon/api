@@ -2,7 +2,7 @@
   "name": "@binar-semicolon/api",
   "version": "0.11.0",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "node dist/cli.js",
     "dev": "tsup --watch . --onSuccess \"node dist/cli.js\"",
     "build": "prisma generate --generator client && tsup --experimental-dts",
     "postinstall": "patch-package || echo",

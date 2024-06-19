@@ -1,3 +1,4 @@
+import { adapter } from "./routes/adapter";
 import { user } from "./routes/user";
 import { createContext, router } from "./trpc";
 import trpcExpress from "@trpc/server/adapters/express";
@@ -9,6 +10,7 @@ const app = express();
 
 export const appRouter = router({
   user,
+  adapter,
 });
 
 app.use(cors()); // eslint-disable-line @typescript-eslint/no-unsafe-call
