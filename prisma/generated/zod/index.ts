@@ -76,6 +76,15 @@ export const UserSchema = z.object({
   profile_picture: z.string().nullable(),
   bio: z.string().nullable(),
   full_name: z.string(),
+=======
+  userId: z.string(),
+  username: z.string(),
+  email: z.string(),
+  passwordHash: z.string(),
+  profilePicture: z.string().nullable(),
+  bio: z.string().nullable(),
+  fullName: z.string(),
+>>>>>>> 932cb246e9477e7956d66db8f462f1974a0c35f7
 });
 
 export type User = z.infer<typeof UserSchema>;
