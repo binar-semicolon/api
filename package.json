@@ -6,7 +6,7 @@
     "dev": "tsup --watch . --onSuccess \"node dist/cli.js\"",
     "build": "prisma generate --generator client && tsup --experimental-dts",
     "postinstall": "patch-package || echo",
-    "vercel-build": "prisma migrate dev && tsup",
+    "vercel-build": "prisma migrate deploy && tsup",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
     "lint": "eslint app/",
