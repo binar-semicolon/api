@@ -23,6 +23,9 @@ export const createContext = async ({
       secret = undefined;
       headerSecret = undefined;
     }
+  } else {
+    secret = undefined;
+    headerSecret = undefined;
   }
 
   if (process.env.AUTH_SECRET && req.headers.cookie) {
