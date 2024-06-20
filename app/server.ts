@@ -13,7 +13,15 @@ export const appRouter = router({
   adapter,
 });
 
-app.use(cors()); // eslint-disable-line @typescript-eslint/no-unsafe-call
+app.use(
+  cors({
+    origin:
+      process.env.NODE_ENV === "production"
+        ? "https://semicolon-ui.vercel.app"
+        : "http://localhost:3000",
+    credentials: true,
+  }),
+); // eslint-disable-line @typescript-eslint/no-unsafe-call
 
 app.use(
   "/trpc",
