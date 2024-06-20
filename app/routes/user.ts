@@ -48,12 +48,10 @@ export const user = router({
         birthday: z.date(),
       }),
     )
-    .mutation(async ({ ctx: { user } }) => {
+    .mutation(async ({ ctx: { user }, input }) => {
       await prisma.user.update({
         where: { email: user.email },
-        data: {
-          ...user,
-        },
+        data: input,
       });
     }),
 });
