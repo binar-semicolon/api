@@ -1,8 +1,12 @@
 import { getToken } from "@auth/core/jwt";
+import { PrismaClient } from "@prisma/client";
 import { TRPCError, initTRPC } from "@trpc/server";
 import trpcExpress from "@trpc/server/adapters/express";
 import crypto from "crypto";
 import superjson from "superjson";
+import { OpenApiMeta } from "trpc-openapi";
+
+const prisma = new PrismaClient();
 
 export const createContext = async ({
   req,
@@ -37,21 +41,43 @@ export const createContext = async ({
     }
   }
 
-  console.log({ secret, session });
-
   return { secret, session };
 };
 
-const t = initTRPC.context<Context>().create({ transformer: superjson });
+const t = initTRPC
+  .meta<OpenApiMeta>()
+  .context<Context>()
+  .create({ transformer: superjson });
 
 type Context = Awaited<ReturnType<typeof createContext>>;
 
-export const userProcedure = t.procedure.use(
-  async ({ ctx: { session, ...ctx }, next }) => {
-    if (!session) {
+export const optUserProcedure = t.procedure.use(
+  async ({ ctx: { session }, next }) =>
+    next({
+      ctx: {
+        user: session?.email
+          ? await prisma.user.findUnique({
+              where: { email: session.email },
+            })
+          : null,
+        session,
+      },
+    }),
+);
+
+export const userProcedure = optUserProcedure.use(
+  async ({ ctx: { user, ...ctx }, next }) => {
+    if (!user) {
       throw new TRPCError({ code: "UNAUTHORIZED" });
-    } else {
-      return next({ ctx: { session, ...ctx } });
+    } else if (!(user.name && user.username))
+      throw new TRPCError({ code: "PRECONDITION_FAILED" });
+    else {
+      return next({
+        ctx: {
+          user: { ...user, name: user.name, username: user.username },
+          ...ctx,
+        },
+      });
     }
   },
 );
