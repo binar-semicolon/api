@@ -34,6 +34,8 @@ export const user = router({
   me: userProcedure
     .meta({ openapi: { method: "GET", path: "/users/me" } })
     .input(z.void())
-    .output(UserSchema)
+    .output(
+      UserSchema.merge(z.object({ name: z.string(), username: z.string() })),
+    )
     .query(({ ctx: { user } }) => user),
 });
