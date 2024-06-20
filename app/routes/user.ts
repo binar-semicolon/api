@@ -3,6 +3,7 @@ import {
   router,
   publicProcedure,
   userProcedure,
+  incompleteUserProcedure,
 } from "@semicolon/api/app/trpc";
 import { UserSchema } from "@semicolon/api/prisma/generated/zod";
 import { TRPCError } from "@trpc/server";
@@ -38,4 +39,21 @@ export const user = router({
       UserSchema.merge(z.object({ name: z.string(), username: z.string() })),
     )
     .query(({ ctx: { user } }) => user),
+  updateProfile: incompleteUserProcedure
+    .input(
+      z.object({
+        name: z.string(),
+        username: z.string(),
+        image: z.string().url().optional(),
+        birthday: z.date(),
+      }),
+    )
+    .mutation(async ({ ctx: { user } }) => {
+      await prisma.user.update({
+        where: { email: user.email },
+        data: {
+          ...user,
+        },
+      });
+    }),
 });

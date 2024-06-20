@@ -65,13 +65,26 @@ export const optUserProcedure = t.procedure.use(
     }),
 );
 
-export const userProcedure = optUserProcedure.use(
+export const incompleteUserProcedure = optUserProcedure.use(
   async ({ ctx: { user, ...ctx }, next }) => {
     if (!user) {
       throw new TRPCError({ code: "UNAUTHORIZED" });
-    } else if (!(user.name && user.username))
+    } else {
+      return next({
+        ctx: {
+          user: { ...user, name: user.name, username: user.username },
+          ...ctx,
+        },
+      });
+    }
+  },
+);
+
+export const userProcedure = incompleteUserProcedure.use(
+  async ({ ctx: { user, ...ctx }, next }) => {
+    if (!(user.name && user.username)) {
       throw new TRPCError({ code: "PRECONDITION_FAILED" });
-    else {
+    } else {
       return next({
         ctx: {
           user: { ...user, name: user.name, username: user.username },
