@@ -1,3 +1,4 @@
+import { adapter } from "./routes/adapter";
 import { user } from "./routes/user";
 import { createContext, router } from "./trpc";
 import trpcExpress from "@trpc/server/adapters/express";
@@ -9,9 +10,18 @@ const app = express();
 
 export const appRouter = router({
   user,
+  adapter,
 });
 
-app.use(cors()); // eslint-disable-line @typescript-eslint/no-unsafe-call
+app.use(
+  cors({
+    origin:
+      process.env.NODE_ENV === "production"
+        ? "https://semicolon-ui.vercel.app"
+        : "http://localhost:3000",
+    credentials: true,
+  }),
+); // eslint-disable-line @typescript-eslint/no-unsafe-call
 
 app.use(
   "/trpc",

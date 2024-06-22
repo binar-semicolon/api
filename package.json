@@ -1,12 +1,12 @@
 {
   "name": "@binar-semicolon/api",
-  "version": "0.11.0",
+  "version": "0.12.1",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "node dist/cli.js",
     "dev": "tsup --watch . --onSuccess \"node dist/cli.js\"",
     "build": "prisma generate --generator client && tsup --experimental-dts",
     "postinstall": "patch-package || echo",
-    "vercel-build": "prisma migrate dev && tsup",
+    "vercel-build": "prisma migrate deploy && tsup",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
     "lint": "eslint app/",
@@ -24,7 +24,7 @@
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
-    "@babel/generator": "^7.24.7",
+    "@auth/core": "^0.32.0",
     "@prisma/client": "^5.15.0",
     "@semicolon/api": "file:.",
     "@trpc/server": "^11.0.0-rc.403",
@@ -44,8 +44,6 @@
     }
   },
   "devDependencies": {
-    "trpc-openapi": "^1.2.0",
-    "patch-package": "^8.0.0",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@eslint/js": "^9.4.0",
@@ -58,8 +56,10 @@
     "@types/node": "^20.14.2",
     "@types/swagger-ui-express": "^4.1.6",
     "eslint": "^8.57.0",
+    "patch-package": "^8.0.0",
     "prettier": "^3.3.2",
     "prisma": "^5.15.0",
+    "trpc-openapi": "^1.2.0",
     "tsup": "^8.0.2",
     "tsx": "^4.15.4",
     "typescript": "^5.4.5",
