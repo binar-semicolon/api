@@ -59,7 +59,12 @@ export const VerificationTokenScalarFieldEnumSchema = z.enum([
   "expires",
 ]);
 
-export const PostScalarFieldEnumSchema = z.enum(["id", "createdAt", "userId"]);
+export const PostScalarFieldEnumSchema = z.enum([
+  "id",
+  "createdAt",
+  "userId",
+  "content",
+]);
 
 export const CommentScalarFieldEnumSchema = z.enum([
   "id",
@@ -167,6 +172,7 @@ export const PostSchema = z.object({
   id: z.string(),
   createdAt: z.coerce.date(),
   userId: z.string(),
+  content: z.string(),
 });
 
 export type Post = z.infer<typeof PostSchema>;
@@ -422,6 +428,7 @@ export const PostSelectSchema: z.ZodType<Prisma.PostSelect> = z
     id: z.boolean().optional(),
     createdAt: z.boolean().optional(),
     userId: z.boolean().optional(),
+    content: z.boolean().optional(),
     user: z.union([z.boolean(), z.lazy(() => UserArgsSchema)]).optional(),
     comments: z
       .union([z.boolean(), z.lazy(() => CommentFindManyArgsSchema)])
@@ -1549,6 +1556,7 @@ export const PostWhereInputSchema: z.ZodType<Prisma.PostWhereInput> = z
       .union([z.lazy(() => DateTimeFilterSchema), z.coerce.date()])
       .optional(),
     userId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+    content: z.union([z.lazy(() => StringFilterSchema), z.string()]).optional(),
     user: z
       .union([
         z.lazy(() => UserRelationFilterSchema),
@@ -1567,6 +1575,7 @@ export const PostOrderByWithRelationInputSchema: z.ZodType<Prisma.PostOrderByWit
       id: z.lazy(() => SortOrderSchema).optional(),
       createdAt: z.lazy(() => SortOrderSchema).optional(),
       userId: z.lazy(() => SortOrderSchema).optional(),
+      content: z.lazy(() => SortOrderSchema).optional(),
       user: z.lazy(() => UserOrderByWithRelationInputSchema).optional(),
       comments: z
         .lazy(() => CommentOrderByRelationAggregateInputSchema)
@@ -1607,6 +1616,9 @@ export const PostWhereUniqueInputSchema: z.ZodType<Prisma.PostWhereUniqueInput> 
           userId: z
             .union([z.lazy(() => UuidFilterSchema), z.string()])
             .optional(),
+          content: z
+            .union([z.lazy(() => StringFilterSchema), z.string()])
+            .optional(),
           user: z
             .union([
               z.lazy(() => UserRelationFilterSchema),
@@ -1626,6 +1638,7 @@ export const PostOrderByWithAggregationInputSchema: z.ZodType<Prisma.PostOrderBy
       id: z.lazy(() => SortOrderSchema).optional(),
       createdAt: z.lazy(() => SortOrderSchema).optional(),
       userId: z.lazy(() => SortOrderSchema).optional(),
+      content: z.lazy(() => SortOrderSchema).optional(),
       _count: z.lazy(() => PostCountOrderByAggregateInputSchema).optional(),
       _max: z.lazy(() => PostMaxOrderByAggregateInputSchema).optional(),
       _min: z.lazy(() => PostMinOrderByAggregateInputSchema).optional(),
@@ -1662,6 +1675,9 @@ export const PostScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.PostScal
         .optional(),
       userId: z
         .union([z.lazy(() => UuidWithAggregatesFilterSchema), z.string()])
+        .optional(),
+      content: z
+        .union([z.lazy(() => StringWithAggregatesFilterSchema), z.string()])
         .optional(),
     })
     .strict();
@@ -3185,6 +3201,7 @@ export const PostCreateInputSchema: z.ZodType<Prisma.PostCreateInput> = z
   .object({
     id: z.string().optional(),
     createdAt: z.coerce.date().optional(),
+    content: z.string(),
     user: z.lazy(() => UserCreateNestedOneWithoutPostsInputSchema),
     comments: z
       .lazy(() => CommentCreateNestedManyWithoutPostInputSchema)
@@ -3200,6 +3217,7 @@ export const PostUncheckedCreateInputSchema: z.ZodType<Prisma.PostUncheckedCreat
       id: z.string().optional(),
       createdAt: z.coerce.date().optional(),
       userId: z.string(),
+      content: z.string(),
       comments: z
         .lazy(() => CommentUncheckedCreateNestedManyWithoutPostInputSchema)
         .optional(),
@@ -3222,6 +3240,9 @@ export const PostUpdateInputSchema: z.ZodType<Prisma.PostUpdateInput> = z
         z.coerce.date(),
         z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
       ])
+      .optional(),
+    content: z
+      .union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputSchema)])
       .optional(),
     user: z
       .lazy(() => UserUpdateOneRequiredWithoutPostsNestedInputSchema)
@@ -3255,6 +3276,12 @@ export const PostUncheckedUpdateInputSchema: z.ZodType<Prisma.PostUncheckedUpdat
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+      content: z
+        .union([
+          z.string(),
+          z.lazy(() => StringFieldUpdateOperationsInputSchema),
+        ])
+        .optional(),
       comments: z
         .lazy(() => CommentUncheckedUpdateManyWithoutPostNestedInputSchema)
         .optional(),
@@ -3273,6 +3300,7 @@ export const PostCreateManyInputSchema: z.ZodType<Prisma.PostCreateManyInput> =
       id: z.string().optional(),
       createdAt: z.coerce.date().optional(),
       userId: z.string(),
+      content: z.string(),
     })
     .strict();
 
@@ -3289,6 +3317,12 @@ export const PostUpdateManyMutationInputSchema: z.ZodType<Prisma.PostUpdateManyM
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
+        ])
+        .optional(),
+      content: z
+        .union([
+          z.string(),
+          z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
     })
@@ -3310,6 +3344,12 @@ export const PostUncheckedUpdateManyInputSchema: z.ZodType<Prisma.PostUncheckedU
         ])
         .optional(),
       userId: z
+        .union([
+          z.string(),
+          z.lazy(() => StringFieldUpdateOperationsInputSchema),
+        ])
+        .optional(),
+      content: z
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -4285,6 +4325,7 @@ export const PostCountOrderByAggregateInputSchema: z.ZodType<Prisma.PostCountOrd
       id: z.lazy(() => SortOrderSchema).optional(),
       createdAt: z.lazy(() => SortOrderSchema).optional(),
       userId: z.lazy(() => SortOrderSchema).optional(),
+      content: z.lazy(() => SortOrderSchema).optional(),
     })
     .strict();
 
@@ -4294,6 +4335,7 @@ export const PostMaxOrderByAggregateInputSchema: z.ZodType<Prisma.PostMaxOrderBy
       id: z.lazy(() => SortOrderSchema).optional(),
       createdAt: z.lazy(() => SortOrderSchema).optional(),
       userId: z.lazy(() => SortOrderSchema).optional(),
+      content: z.lazy(() => SortOrderSchema).optional(),
     })
     .strict();
 
@@ -4303,6 +4345,7 @@ export const PostMinOrderByAggregateInputSchema: z.ZodType<Prisma.PostMinOrderBy
       id: z.lazy(() => SortOrderSchema).optional(),
       createdAt: z.lazy(() => SortOrderSchema).optional(),
       userId: z.lazy(() => SortOrderSchema).optional(),
+      content: z.lazy(() => SortOrderSchema).optional(),
     })
     .strict();
 
@@ -6800,6 +6843,7 @@ export const PostCreateWithoutUserInputSchema: z.ZodType<Prisma.PostCreateWithou
     .object({
       id: z.string().optional(),
       createdAt: z.coerce.date().optional(),
+      content: z.string(),
       comments: z
         .lazy(() => CommentCreateNestedManyWithoutPostInputSchema)
         .optional(),
@@ -6817,6 +6861,7 @@ export const PostUncheckedCreateWithoutUserInputSchema: z.ZodType<Prisma.PostUnc
     .object({
       id: z.string().optional(),
       createdAt: z.coerce.date().optional(),
+      content: z.string(),
       comments: z
         .lazy(() => CommentUncheckedCreateNestedManyWithoutPostInputSchema)
         .optional(),
@@ -7167,6 +7212,9 @@ export const PostScalarWhereInputSchema: z.ZodType<Prisma.PostScalarWhereInput> 
         .union([z.lazy(() => DateTimeFilterSchema), z.coerce.date()])
         .optional(),
       userId: z.union([z.lazy(() => UuidFilterSchema), z.string()]).optional(),
+      content: z
+        .union([z.lazy(() => StringFilterSchema), z.string()])
+        .optional(),
     })
     .strict();
 
@@ -8421,6 +8469,7 @@ export const PostCreateWithoutCommentsInputSchema: z.ZodType<Prisma.PostCreateWi
     .object({
       id: z.string().optional(),
       createdAt: z.coerce.date().optional(),
+      content: z.string(),
       user: z.lazy(() => UserCreateNestedOneWithoutPostsInputSchema),
       likes: z
         .lazy(() => LikeCreateNestedManyWithoutPostInputSchema)
@@ -8437,6 +8486,7 @@ export const PostUncheckedCreateWithoutCommentsInputSchema: z.ZodType<Prisma.Pos
       id: z.string().optional(),
       createdAt: z.coerce.date().optional(),
       userId: z.string(),
+      content: z.string(),
       likes: z
         .lazy(() => LikeUncheckedCreateNestedManyWithoutPostInputSchema)
         .optional(),
@@ -8692,6 +8742,12 @@ export const PostUpdateWithoutCommentsInputSchema: z.ZodType<Prisma.PostUpdateWi
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+      content: z
+        .union([
+          z.string(),
+          z.lazy(() => StringFieldUpdateOperationsInputSchema),
+        ])
+        .optional(),
       user: z
         .lazy(() => UserUpdateOneRequiredWithoutPostsNestedInputSchema)
         .optional(),
@@ -8720,6 +8776,12 @@ export const PostUncheckedUpdateWithoutCommentsInputSchema: z.ZodType<Prisma.Pos
         ])
         .optional(),
       userId: z
+        .union([
+          z.string(),
+          z.lazy(() => StringFieldUpdateOperationsInputSchema),
+        ])
+        .optional(),
+      content: z
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -8806,6 +8868,7 @@ export const PostCreateWithoutLikesInputSchema: z.ZodType<Prisma.PostCreateWitho
     .object({
       id: z.string().optional(),
       createdAt: z.coerce.date().optional(),
+      content: z.string(),
       user: z.lazy(() => UserCreateNestedOneWithoutPostsInputSchema),
       comments: z
         .lazy(() => CommentCreateNestedManyWithoutPostInputSchema)
@@ -8822,6 +8885,7 @@ export const PostUncheckedCreateWithoutLikesInputSchema: z.ZodType<Prisma.PostUn
       id: z.string().optional(),
       createdAt: z.coerce.date().optional(),
       userId: z.string(),
+      content: z.string(),
       comments: z
         .lazy(() => CommentUncheckedCreateNestedManyWithoutPostInputSchema)
         .optional(),
@@ -9077,6 +9141,12 @@ export const PostUpdateWithoutLikesInputSchema: z.ZodType<Prisma.PostUpdateWitho
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+      content: z
+        .union([
+          z.string(),
+          z.lazy(() => StringFieldUpdateOperationsInputSchema),
+        ])
+        .optional(),
       user: z
         .lazy(() => UserUpdateOneRequiredWithoutPostsNestedInputSchema)
         .optional(),
@@ -9110,6 +9180,12 @@ export const PostUncheckedUpdateWithoutLikesInputSchema: z.ZodType<Prisma.PostUn
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+      content: z
+        .union([
+          z.string(),
+          z.lazy(() => StringFieldUpdateOperationsInputSchema),
+        ])
+        .optional(),
       comments: z
         .lazy(() => CommentUncheckedUpdateManyWithoutPostNestedInputSchema)
         .optional(),
@@ -9124,6 +9200,7 @@ export const PostCreateWithoutMediaInputSchema: z.ZodType<Prisma.PostCreateWitho
     .object({
       id: z.string().optional(),
       createdAt: z.coerce.date().optional(),
+      content: z.string(),
       user: z.lazy(() => UserCreateNestedOneWithoutPostsInputSchema),
       comments: z
         .lazy(() => CommentCreateNestedManyWithoutPostInputSchema)
@@ -9140,6 +9217,7 @@ export const PostUncheckedCreateWithoutMediaInputSchema: z.ZodType<Prisma.PostUn
       id: z.string().optional(),
       createdAt: z.coerce.date().optional(),
       userId: z.string(),
+      content: z.string(),
       comments: z
         .lazy(() => CommentUncheckedCreateNestedManyWithoutPostInputSchema)
         .optional(),
@@ -9201,6 +9279,12 @@ export const PostUpdateWithoutMediaInputSchema: z.ZodType<Prisma.PostUpdateWitho
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+      content: z
+        .union([
+          z.string(),
+          z.lazy(() => StringFieldUpdateOperationsInputSchema),
+        ])
+        .optional(),
       user: z
         .lazy(() => UserUpdateOneRequiredWithoutPostsNestedInputSchema)
         .optional(),
@@ -9229,6 +9313,12 @@ export const PostUncheckedUpdateWithoutMediaInputSchema: z.ZodType<Prisma.PostUn
         ])
         .optional(),
       userId: z
+        .union([
+          z.string(),
+          z.lazy(() => StringFieldUpdateOperationsInputSchema),
+        ])
+        .optional(),
+      content: z
         .union([
           z.string(),
           z.lazy(() => StringFieldUpdateOperationsInputSchema),
@@ -9276,6 +9366,7 @@ export const PostCreateManyUserInputSchema: z.ZodType<Prisma.PostCreateManyUserI
     .object({
       id: z.string().optional(),
       createdAt: z.coerce.date().optional(),
+      content: z.string(),
     })
     .strict();
 
@@ -9658,6 +9749,12 @@ export const PostUpdateWithoutUserInputSchema: z.ZodType<Prisma.PostUpdateWithou
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+      content: z
+        .union([
+          z.string(),
+          z.lazy(() => StringFieldUpdateOperationsInputSchema),
+        ])
+        .optional(),
       comments: z
         .lazy(() => CommentUpdateManyWithoutPostNestedInputSchema)
         .optional(),
@@ -9685,6 +9782,12 @@ export const PostUncheckedUpdateWithoutUserInputSchema: z.ZodType<Prisma.PostUnc
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
         ])
         .optional(),
+      content: z
+        .union([
+          z.string(),
+          z.lazy(() => StringFieldUpdateOperationsInputSchema),
+        ])
+        .optional(),
       comments: z
         .lazy(() => CommentUncheckedUpdateManyWithoutPostNestedInputSchema)
         .optional(),
@@ -9710,6 +9813,12 @@ export const PostUncheckedUpdateManyWithoutUserInputSchema: z.ZodType<Prisma.Pos
         .union([
           z.coerce.date(),
           z.lazy(() => DateTimeFieldUpdateOperationsInputSchema),
+        ])
+        .optional(),
+      content: z
+        .union([
+          z.string(),
+          z.lazy(() => StringFieldUpdateOperationsInputSchema),
         ])
         .optional(),
     })
