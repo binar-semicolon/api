@@ -83,8 +83,10 @@ model Post {
   comments  Comment[]
   likes     Like[]
   media     Media[]
-
+  content   String    
+  
   @@map("posts")
+  @@index([content])
 }
 
 model Comment {

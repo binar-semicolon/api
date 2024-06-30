@@ -1,4 +1,5 @@
 import { adapter } from "./routes/adapter";
+import { search } from "./routes/search";
 import { user } from "./routes/user";
 import { createContext, router } from "./trpc";
 import trpcExpress from "@trpc/server/adapters/express";
@@ -11,6 +12,7 @@ const app = express();
 export const appRouter = router({
   user,
   adapter,
+  search,
 });
 
 app.use(
