@@ -7,10 +7,11 @@ const prisma = new PrismaClient();
 
 export const search = router({
   searchPosts: publicProcedure.input(z.string()).query(async ({ input }) => {
-    const results = await prisma.post.findMany({
+    const postResults = await prisma.post.findMany({
       where: {
         content: {
-          search: input,
+          contains: input,
+          mode: "insensitive",
         },
       },
       include: {
@@ -18,13 +19,38 @@ export const search = router({
       },
     });
 
-    if (!results.length) {
+    const userResults = await prisma.user.findMany({
+      where: {
+        OR: [
+          {
+            username: {
+              contains: input,
+              mode: "insensitive",
+            },
+          },
+          {
+            name: {
+              contains: input,
+              mode: "insensitive",
+            },
+          },
+          {
+            bio: {
+              contains: input,
+              mode: "insensitive",
+            },
+          },
+        ],
+      },
+    });
+
+    if (!postResults.length && !userResults.length) {
       throw new TRPCError({
         code: "NOT_FOUND",
         message: "No results matched",
       });
     }
 
-    return results;
+    return { postResults, userResults };
   }),
 });
