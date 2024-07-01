@@ -1,10 +1,11 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "builds": [{ "src": "./dist/index.js", "use": "@vercel/node" }],
+  "builds": [{ "src": "./dist/cli.js", "use": "@vercel/node" }],
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/dist/index.js"
+      "destination": "/dist/cli.js"
     }
   ]
 }

@@ -1,26 +1,57 @@
-import { contract } from "@/app/contract";
 import { PrismaClient } from "@prisma/client";
-import { initServer } from "@ts-rest/express";
+import {
+  router,
+  publicProcedure,
+  userProcedure,
+  incompleteUserProcedure,
+} from "@semicolon/api/app/trpc";
+import { UserSchema } from "@semicolon/api/prisma/generated/zod";
+import { TRPCError } from "@trpc/server";
+import { z } from "zod";
 
 const prisma = new PrismaClient();
-const s = initServer();
 
-export const user = s.router(contract.user, {
-  get: async ({ params: { id } }) => {
-    const user = await prisma.user.findUnique({
-      where: { id },
-    });
+export const user = router({
+  id: publicProcedure
+    .meta({ openapi: { method: "GET", path: "/users/id/{id}" } })
+    .input(z.object({ id: z.string().uuid() }))
+    .output(
+      UserSchema.omit({ email: true, emailVerified: true, updatedAt: true }),
+    )
+    .query(async ({ input: { id } }) => {
+      const user = await prisma.user.findUnique({
+        where: { id },
+      });
 
-    if (!user) {
-      return {
-        status: 404,
-        body: { message: "The requested user does not exist" },
-      };
-    }
+      if (!user || !(user.name && user.username)) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "The requested user does not exist",
+        });
+      }
 
-    return {
-      status: 200,
-      body: user,
-    };
-  },
+      return user;
+    }),
+  me: userProcedure
+    .meta({ openapi: { method: "GET", path: "/users/me" } })
+    .input(z.void())
+    .output(
+      UserSchema.merge(z.object({ name: z.string(), username: z.string() })),
+    )
+    .query(({ ctx: { user } }) => user),
+  updateProfile: incompleteUserProcedure
+    .input(
+      z.object({
+        name: z.string(),
+        username: z.string(),
+        image: z.string().url().optional(),
+        birthday: z.date(),
+      }),
+    )
+    .mutation(async ({ ctx: { user }, input }) => {
+      await prisma.user.update({
+        where: { email: user.email },
+        data: input,
+      });
+    }),
 });
